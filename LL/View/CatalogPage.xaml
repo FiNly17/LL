@@ -1,0 +1,72 @@
+﻿<Page x:Class="LL.View.CatalogPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LL.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1520"
+      Title="MainPage">
+    <Page.Resources>
+        <Style x:Key="buttonAuthor" TargetType="Button">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="3" BorderBrush="Gray">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!--<Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.6" />
+                    <Setter Property="Background" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>-->
+        </Style>
+        <Style x:Key="TextTB" TargetType="TextBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+    </Page.Resources>
+    <DockPanel>
+        <StackPanel Margin="350,0,0,0" Height="70" DockPanel.Dock="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+            <Button Style="{StaticResource buttonAuthor}" Width="150" Content="Материалы" Click="CreatePr"></Button>
+            <Button Style="{StaticResource buttonAuthor}" Width="90" Content="Цвет"></Button>
+            <Button Style="{StaticResource buttonAuthor}" Width="110" Content="Размер"></Button>
+            <Button Style="{StaticResource buttonAuthor}" Width="110" Content="Бренд"></Button>
+            <Button Style="{StaticResource buttonAuthor}" Width="110" Content="Цена"></Button>
+        </StackPanel>
+        <StackPanel Width="200" DockPanel.Dock="Left" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top">
+            <TextBox Style="{StaticResource TextTB}" Text="Обувь"/>
+            <TextBox Style="{StaticResource TextTB}" Text="Одежда"/>
+            <TextBox Style="{StaticResource TextTB}" Text="Акксесуары"/>
+            <TextBox Style="{StaticResource TextTB}" Text="Premium"/>
+        </StackPanel>
+        <ScrollViewer DockPanel.Dock="Bottom">
+            <WrapPanel x:Name="Catalogs" HorizontalAlignment="Center">
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+                <local:Block_Of_Clothes Height="400" Width="300"/>
+            </WrapPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Page>
