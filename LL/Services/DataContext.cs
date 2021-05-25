@@ -104,7 +104,7 @@ namespace LL.Services
 				return GetInstance().Accounts.ToList().Where(account => account.AccountType == AccountType.Admin).Cast<Admin>().ToList();
 		}
 
-		public static List<Product> SearchProducts(string query, ProductType type = ProductType.None)
+		public static List<Product> SearchProducts(string query, ProductTypes type = ProductTypes.None)
 		{
 			query = query?.ToLower();
 
@@ -114,12 +114,12 @@ namespace LL.Services
 
 				switch (type)
 				{
-					case ProductType.Clothing:
-						return GetInstance().Products.Where(product => product.Type == ProductType.Clothing &&
+					case ProductTypes.Clothing:
+						return GetInstance().Products.Where(product => product.Type == ProductTypes.Clothing &&
 					tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
 
-					case ProductType.Shoes:
-						return GetInstance().Products.Where(product => product.Type == ProductType.Shoes &&
+					case ProductTypes.Shoes:
+						return GetInstance().Products.Where(product => product.Type == ProductTypes.Shoes &&
 					tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
 
 					default:

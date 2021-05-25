@@ -12,6 +12,7 @@ using LL.Infrastructure;
 using LL.Infrastructure.Commands;
 using LL.Models;
 using LL.Services;
+using LL.Views;
 
 using Microsoft.Win32;
 
@@ -24,6 +25,12 @@ namespace LL.ViewModels
 		public bool IsEditing { get; }
 
 		public string State { get => IsEditing ? "Редактирование товара" : "Добавление товара"; }
+
+		public List<ProductTypes> ProductTypes => Enum.GetValues(typeof(ProductTypes)).Cast<ProductTypes>().ToList();
+
+		public List<ClothingSizes> ClothingSizes => Enum.GetValues(typeof(ClothingSizes)).Cast<ClothingSizes>().ToList();
+
+		public int Id { get; }
 
 		private string _model = string.Empty;
 
@@ -41,9 +48,9 @@ namespace LL.ViewModels
 			set { SetProperty(ref _brand, value); }
 		}
 
-		private ProductType _productType;
+		private ProductTypes _productType;
 
-		public ProductType ProductType
+		public ProductTypes ProductType
 		{
 			get { return _productType; }
 			set { SetProperty(ref _productType, value); }
@@ -65,6 +72,22 @@ namespace LL.ViewModels
 			set { SetProperty(ref _image, value); }
 		}
 
+		private double _shoesSize;
+
+		public double ShoesSize
+		{
+			get { return _shoesSize; }
+			set { SetProperty(ref _shoesSize, value); }
+		}
+
+		private ClothingSizes _clothingSize;
+
+		public ClothingSizes ClothingSize
+		{
+			get { return _clothingSize; }
+			set { SetProperty(ref _clothingSize, value); }
+		}
+
 		public string Error { get; private set; }
 
 		//public string this[string columnName] => Validate(columnName);
@@ -73,7 +96,7 @@ namespace LL.ViewModels
 
 		private static bool CanSaveCommandExecute(object p) => true;
 
-		//private void OnSaveCommandExecuted(object p) => Save();
+		private void OnSaveCommandExecuted(object p) => Save();
 
 		public ICommand LoadImgCommand { get; set; }
 
@@ -83,11 +106,12 @@ namespace LL.ViewModels
 
 		public ProductEditorViewModel()
 		{
-			//SaveCommand = new RelayCommand(OnSaveCommandExecuted, CanSaveCommandExecute);
+			SaveCommand = new RelayCommand(OnSaveCommandExecuted, CanSaveCommandExecute);
 			LoadImgCommand = new RelayCommand(OnLoadImgCommandExecuted, CanLoadImgCommandExecute);
 
 			if (InitialProduct != null)
 			{
+				Id = InitialProduct.Id;
 				Model = InitialProduct.Model;
 				Brand = InitialProduct.Brand;
 				ProductType = InitialProduct.Type;
@@ -102,51 +126,51 @@ namespace LL.ViewModels
 			}
 		}
 
-		//private void Save()
-		//{
-		//	string errors = CheckFields();
-		//	if (!string.IsNullOrWhiteSpace(errors))
-		//	{
-		//		MessageBox.Show(errors, "Ошибка ввода данных");
-		//		return;
-		//	}
+		private void Save()
+		{
+			//string errors = CheckFields();
+			//if (!string.IsNullOrWhiteSpace(errors))
+			//{
+			//	MessageBox.Show(errors, "Ошибка ввода данных");
+			//	return;
+			//}
 
-		//	try
-		//	{
-		//		if (IsEditing)
-		//		{
-		//			var book = DataContext.GetInstance().Books.Find(Id);
-		//			book.Title = Title;
-		//			book.Author = Author;
-		//			book.Genre = Genre;
-		//			book.Amt = Convert.ToInt32(Amt);
-		//			book.Image = Img;
+			try
+			{
+				if (IsEditing)
+				{
+					var product = DataContext.GetInstance().Products.Find(Id);
+					product.Model = Model;
+					product.Brand = Brand;
+					product.Type = ProductType;
+					product.Price = Convert.ToDouble(Price);
+					product.Image = Image;
 
-		//			DataContext.GetInstance().SaveChanges();
-		//		}
-		//		else
-		//		{
-		//			DataContext.GetInstance().Books.Add(new Book()
-		//			{
-		//				Title = Title,
-		//				Author = Author,
-		//				Genre = Genre,
-		//				Amt = Convert.ToInt32(Amt),
-		//				Image = Img
-		//			});
+					DataContext.GetInstance().SaveChanges();
+				}
+				else
+				{
+					if (ProductType == Models.ProductTypes.Clothing)
+						DataContext.GetInstance().Products.Add(new Clothing(
+							ClothingSize, Model, Brand,
+							Convert.ToDouble(Price), Image));
+					else
+						DataContext.GetInstance().Products.Add(new Shoes(
+							ShoesSize, Model, Brand,
+							Convert.ToDouble(Price), Image));
+				}
 
-		//			DataContext.GetInstance().SaveChanges();
-		//		}
+				DataContext.GetInstance().SaveChanges();
 
-		//		MessageBox.Show("Сохранено");
-		//		new SwitchPageCommand().Execute(PagesEnum.BookConstructor);
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show("Не удалось сохранить изменения");
-		//		Logger.Log(ex);
-		//	}
-		//}
+				MessageBox.Show("Сохранено");
+				new SwitchAdminPageCommand().Execute(AdminPages.Products);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Не удалось сохранить изменения");
+				Logger.Log(ex);
+			}
+		}
 
 		//private string CheckFields()
 		//{

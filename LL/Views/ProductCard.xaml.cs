@@ -6,11 +6,11 @@ using System.Windows.Media.Imaging;
 namespace LL.Views
 {
 	/// <summary>
-	/// Логика взаимодействия для Product.xaml
+	/// Логика взаимодействия для ProductCard.xaml
 	/// </summary>
-	public partial class Product : UserControl
+	public partial class ProductCard : UserControl
 	{
-		public Product()
+		public ProductCard()
 		{
 			InitializeComponent();
 		}

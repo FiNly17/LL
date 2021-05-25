@@ -14,13 +14,14 @@
         <vm:UsersTableViewModel />
     </Page.DataContext>
 
-    <DockPanel Background="Bisque">
+    <DockPanel>
         <Grid DockPanel.Dock="Top" Height="60">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="4*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
+
             <DockPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                 <Button Style="{StaticResource MaterialDesignRaisedButton}" Command="{Binding SearchCommand}"
                         DockPanel.Dock="Right" Width="100">
@@ -41,7 +42,7 @@
             </DockPanel>
         </Grid>
         <DataGrid ItemsSource="{Binding SearchResult, Mode=OneWay}" IsReadOnly="True" AutoGenerateColumns="False"
-                  VirtualizingPanel.ScrollUnit="Pixel" Background="Bisque">
+                  VirtualizingPanel.ScrollUnit="Pixel">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="*" />
                 <DataGridTextColumn Binding="{Binding FullName}" Header="ФИО" Width="*" />

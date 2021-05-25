@@ -98,6 +98,7 @@
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Infrastructure\ImageProvider.cs" />
+    <Compile Include="Infrastructure\Commands\SwitchAdminPageCommand.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Clothing.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Services\Validator.cs" />
     <Compile Include="ViewModels\AdminsTableViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\CatalogViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProductEditorViewModel.cs" />
     <Compile Include="ViewModels\ProductsTableViewModel.cs" />
@@ -123,8 +125,8 @@
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Product.xaml.cs">
-      <DependentUpon>Product.xaml</DependentUpon>
+    <Compile Include="Views\ProductCard.xaml.cs">
+      <DependentUpon>ProductCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CatalogPage.xaml.cs">
       <DependentUpon>CatalogPage.xaml</DependentUpon>
@@ -165,7 +167,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Product.xaml">
+    <Page Include="Views\ProductCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
