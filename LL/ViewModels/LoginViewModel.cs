@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 
@@ -48,9 +43,13 @@ namespace LL.ViewModels
 		{
 			if (UserManager.Login(Login, Password))
 			{
-				var window = new MainWindow();
+				Window window;
+				if (UserManager.AccountType == Models.AccountType.User)
+					window = new MainWindow();
+				else
+					window = new AdminWindow();
 				Application.Current.MainWindow = window;
-				CloseRequest.Invoke(this, EventArgs.Empty);
+				CloseRequest?.Invoke(this, EventArgs.Empty);
 				window.Show();
 			}
 			else

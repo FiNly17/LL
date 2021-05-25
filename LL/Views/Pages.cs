@@ -6,4 +6,12 @@
 		CatalogPage,
 		OrderPage
 	}
+
+	public enum AdminPages
+	{
+		Products,
+		Users,
+		Editor,
+		Admins
+	}
 }

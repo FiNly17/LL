@@ -82,12 +82,26 @@ namespace LL.Services
 			{
 				var tags = query.Split(' ');
 
-				return
-					GetUsers().Where(booking =>
-						tags.All(tag => booking.ToString().ToLower().Contains(tag))).ToList();
+				return GetUsers().Where(user =>
+						tags.All(tag => user.ForSearch().ToLower().Contains(tag))).ToList();
 			}
 			else
 				return GetUsers();
+		}
+
+		public static List<Admin> SearchAdmins(string query)
+		{
+			query = query?.ToLower();
+
+			if (!string.IsNullOrEmpty(query))
+			{
+				var tags = query.Split(' ');
+
+				return GetInstance().Accounts.Where(account => account.AccountType == AccountType.Admin &&
+						tags.All(tag => account.ForSearch().ToLower().Contains(tag))).Cast<Admin>().ToList();
+			}
+			else
+				return GetInstance().Accounts.ToList().Where(account => account.AccountType == AccountType.Admin).Cast<Admin>().ToList();
 		}
 
 		public static List<Product> SearchProducts(string query, ProductType type = ProductType.None)

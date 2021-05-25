@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace LL.Models
 {
@@ -53,6 +54,8 @@ namespace LL.Models
 			Surname = surname;
 			MiddleName = middleName;
 		}
+
+		public virtual string ForSearch() => $"{Id} {Login} {EMail} {Phone} {FullName}";
 	}
 
 	public enum AccountType

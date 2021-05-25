@@ -44,7 +44,7 @@ namespace LL.Services
 			return true;
 		}
 
-		public static (bool result, string error) Register(string login, string password, string email, string phone, string surname, string name, string middleName)
+		public static (bool result, string error) Register(string login, string password, string email, string phone, string surname, string name, string middleName, string address)
 		{
 			try
 			{
@@ -61,7 +61,7 @@ namespace LL.Services
 
 				var hashedPassword = HashPassword(password);
 
-				db.Accounts.Add(new User(login, hashedPassword, email, phone, surname, name, middleName));
+				db.Accounts.Add(new User(login, hashedPassword, email, phone, surname, name, middleName, address));
 				db.SaveChanges();
 
 				return (true, null);

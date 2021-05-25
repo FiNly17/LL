@@ -6,7 +6,11 @@ namespace LL.Services
 {
 	public static class Validator
 	{
-		public static Regex NameRegex = new Regex(@"^[А-Яа-яЁёA-Za-z \-]+$");
+		public static Regex loginRegex = new Regex(@"^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$");
+		public static Regex nameRegex = new Regex(@"^[А-Яа-яЁёA-Za-z \-]+$");
+		public static Regex phoneRegex = new Regex(@"^(\+375|80)(25|29|33|44)(\d{7})$");
+		public static Regex addressRegex = new Regex(@"^[А-Яа-яЁё\w \-,./]+$");
+		public static Regex eMailRegex = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
 		public static (bool isValid, List<string> forbiddenSymbols) Validate(string value, Regex regex)
 		{
@@ -18,6 +22,6 @@ namespace LL.Services
 				.Select(symbol => symbol.ToString()).ToList());
 		}
 
-		public static string JoinSymbols(List<string> symbols) => "\"" + string.Join("\", \"", symbols) + "\"";
+		public static string JoinSymbols(List<string> symbols) => "\"" + string.Join("\", \"", symbols.Distinct()) + "\"";
 	}
 }

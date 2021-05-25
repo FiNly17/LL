@@ -6,10 +6,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:LL.Views"
         mc:Ignorable="d"
-        Title="Window_Of_Project" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
-    <Window.Background>
-        <SolidColorBrush Color="Black" />
-    </Window.Background>
+        Title="Window_Of_Project" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        WindowStyle="None" Background="Black">
+
     <Window.Resources>
         <Style x:Key="btnProfile" TargetType="Button">
             <Setter Property="FontSize" Value="22" />
@@ -36,7 +35,7 @@
     </Window.Resources>
     <DockPanel>
 
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Right" Height="100" Width="1519">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Right" Height="100">
             <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" FontWeight="Regular"
                             Margin="4,30,50,10" IsChecked="True" Content="Главная"

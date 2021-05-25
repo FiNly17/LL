@@ -18,13 +18,14 @@
         <Style x:Key="TBVis" TargetType="{x:Type TextBlock}">
             <Setter Property="Visibility" Value="Collapsed" />
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Text, ElementName=Loggin}" Value="">
+                <DataTrigger Binding="{Binding Text, ElementName=Login}" Value="">
                     <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="TB" TargetType="TextBox">
             <Setter Property="Background" Value="Transparent" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="BorderThickness" Value="2" />
             <Setter Property="BorderBrush" Value="#FF676767" />
             <Setter Property="Height" Value="30" />
@@ -75,8 +76,8 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Grid.ColumnSpan="2" Opacity="0.3" Grid.Row="0" Grid.RowSpan="5" gif:ImageBehavior.AnimatedSource="/Images/lightning.gif" />
         <Grid Grid.Column="0" Grid.ColumnSpan="2" Name="ToolBar" Background="Transparent" MouseDown="ToolBar_MouseDown">
@@ -116,31 +117,30 @@
         </Grid>
         <Grid Background="Transparent" Grid.Row="1" Grid.ColumnSpan="2" Name="Logo">
             <StackPanel>
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/ll.png" />
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="300" VerticalAlignment="Top" Source="/Images/slog.png" />
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/ll.png" />
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Width="300" VerticalAlignment="Top" Source="/Images/slog.png" />
             </StackPanel>
         </Grid>
-        <TextBox x:Name="Loggin" Grid.Column="0" Grid.Row="2" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Логин"/>
-        <TextBox x:Name="Password" Grid.Row="2" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}"/>
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Пароль"/>
-        <TextBox Visibility="Visible" x:Name="Rewrite_Pass" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBox Text="{Binding Login}" x:Name="Login" Grid.Column="0" Grid.Row="2" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Логин" />
+        <TextBox Text="{Binding Password}" x:Name="Password" Grid.Row="2" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Пароль" />
+        <TextBox Text="{Binding PasswordRepeat}" Visibility="Visible" x:Name="Rewrite_Pass" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
         <TextBlock Style="{StaticResource TBVis}" Visibility="Visible" x:Name="Rewrite_Pass_Block" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Введите пароль ещё раз" />
-        <TextBox x:Name="Email" Grid.Row="2" Margin="0,190,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}"/>
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Email"/>
-        <TextBox x:Name="Prhone" Grid.Row="2" Margin="0,240,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}"/>
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,246,0,0" VerticalAlignment="Top" Text="Телефон"/>
-        <TextBox x:Name="SurName" Grid.Row="2" Grid.Column="1" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}"/>
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" Text="Фалмилия"/>
-        <TextBox x:Name="Name" Grid.Row="2" Grid.Column="1" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}"/>
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Имя"/>
-        <TextBox x:Name="MiddleName" Grid.Column="1" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}"/>
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" Text="Отчество"/>
-        <TextBox Grid.Column="1" x:Name="Address" Grid.Row="2" Margin="0,190,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}"/>
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Адрес"/>
+        <TextBox Text="{Binding EMail}" x:Name="Email" Grid.Row="2" Margin="0,190,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Email" />
+        <TextBox Text="{Binding Phone}" x:Name="Phone" Grid.Row="2" Margin="0,240,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,246,0,0" VerticalAlignment="Top" Text="Телефон" />
+        <TextBox Text="{Binding Surname}" x:Name="Surname" Grid.Row="2" Grid.Column="1" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" Text="Фалмилия" />
+        <TextBox Text="{Binding Name}" x:Name="Name" Grid.Row="2" Grid.Column="1" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Имя" />
+        <TextBox Text="{Binding MiddleName}" x:Name="MiddleName" Grid.Column="1" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" Text="Отчество" />
+        <TextBox Text="{Binding Address}" Grid.Column="1" x:Name="Address" Grid.Row="2" Margin="0,190,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Адрес" />
 
-
-        <Button  Command="{Binding LoginCommand}" x:Name="myButton" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Зарегистрироваться" Height="30" Width="170" Background="#FF333333" Foreground="#FF7C7C7C">
+        <Button Command="{Binding RegistrationCommand}" x:Name="myButton" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Зарегистрироваться" Height="30" Width="170" Background="#FF333333" Foreground="#FF7C7C7C">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="buttonBorder" CornerRadius="4"

@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
+using LL.ViewModels;
+
 namespace LL.Views
 {
 	/// <summary>
@@ -11,6 +13,7 @@ namespace LL.Views
 		public RegistrationWindow()
 		{
 			InitializeComponent();
+			(DataContext as RegistrationViewModel).CloseRequest += (sender, e) => Close();
 		}
 
 		private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)

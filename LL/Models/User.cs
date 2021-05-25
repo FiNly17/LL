@@ -20,10 +20,12 @@ namespace LL.Models
 		{
 		}
 
-		public User(string login, string password, string eMail, string phone, string surname, string name, string middleName)
+		public User(string login, string password, string eMail, string phone, string surname, string name, string middleName, string address)
 			: base(login, password, eMail, phone, surname, name, middleName, AccountType.User)
-		{ }
+		{
+			Address = address;
+		}
 
-		public string ForSearch() => $"{Id} {Login} {EMail} {Phone} {Address} {FullName}";
+		public override string ForSearch() => $"{base.ForSearch()} {Address}";
 	}
 }
