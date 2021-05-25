@@ -17,7 +17,7 @@ namespace LL.Views
 
 		public void CreatePr(object sender, RoutedEventArgs e)
 		{
-			Product blck = new Product();
+			ProductCard blck = new ProductCard();
 			var uriSource = new Uri("C:\\Studing\\Курсовой проект\\LL\\LL\\Images\\heart2.png");
 			blck.PhotoPr.Source = new BitmapImage(uriSource);
 			blck.Price.Text = "22,00";

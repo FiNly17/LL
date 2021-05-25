@@ -2,16 +2,20 @@
 {
 	public class Clothing : Product
 	{
-		public ClothingSize Size { get; set; }
+		public ClothingSizes Size { get; set; }
 
-		public Clothing(ClothingSize size, string model, string brand, double price, byte[] image)
-			: base(model, brand, price, image, ProductType.Clothing)
+		public Clothing()
+		{
+		}
+
+		public Clothing(ClothingSizes size, string model, string brand, double price, byte[] image)
+			: base(model, brand, price, image, ProductTypes.Clothing)
 		{
 			Size = size;
 		}
 	}
 
-	public enum ClothingSize
+	public enum ClothingSizes
 	{
 		XS, S, M, L, XL, XXL
 	}

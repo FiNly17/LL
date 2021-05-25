@@ -17,9 +17,9 @@ namespace LL.ViewModels
 			set { SetProperty(ref _query, value); }
 		}
 
-		private ProductType _productType = ProductType.None;
+		private ProductTypes _productType = ProductTypes.None;
 
-		public ProductType ProductType
+		public ProductTypes ProductType
 		{
 			get { return _productType; }
 			set { SetProperty(ref _productType, value); }

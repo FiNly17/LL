@@ -1,6 +1,9 @@
 ﻿using LL.Services;
 
+using System.Globalization;
+using System.Threading;
 using System.Windows;
+using System.Windows.Markup;
 using System.Windows.Threading;
 
 namespace LL
@@ -10,6 +13,26 @@ namespace LL
 	/// </summary>
 	public partial class App : Application
 	{
+		public App()
+		{
+			InitCulture();
+		}
+
+		private void InitCulture()
+		{
+			var vCulture = new CultureInfo("ru-BY");
+
+			Thread.CurrentThread.CurrentCulture = vCulture;
+			Thread.CurrentThread.CurrentUICulture = vCulture;
+			CultureInfo.DefaultThreadCurrentCulture = vCulture;
+			CultureInfo.DefaultThreadCurrentUICulture = vCulture;
+
+			FrameworkElement.LanguageProperty.OverrideMetadata(
+			typeof(FrameworkElement),
+			new FrameworkPropertyMetadata(
+		 XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+		}
+
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
 			DataContext.GetInstance();

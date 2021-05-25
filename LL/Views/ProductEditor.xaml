@@ -4,10 +4,36 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:LL.Views"
+      xmlns:vm="clr-namespace:LL.ViewModels"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductEditor">
 
+    <Page.DataContext>
+        <vm:ProductEditorViewModel />
+    </Page.DataContext>
+
     <Grid>
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                    <Setter Property="Foreground" Value="White" />
+                </Style>
+                <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <Setter Property="Foreground" Value="White" />
+                </Style>
+            </StackPanel.Resources>
+            <TextBox Text="{Binding Model}" materialDesign:HintAssist.Hint="Модель" />
+            <TextBox Text="{Binding Brand}" materialDesign:HintAssist.Hint="Брэнд" />
+            <TextBox Text="{Binding Price}" materialDesign:HintAssist.Hint="Цена" />
+            <ComboBox ItemsSource="{Binding ProductTypes}" SelectedItem="{Binding ProductType}" materialDesign:HintAssist.Hint="Тип продукта" />
+            <TextBox Text="{Binding ShoesSize}" materialDesign:HintAssist.Hint="Размер обуви" />
+            <ComboBox ItemsSource="{Binding ClothingSizes}" SelectedItem="{Binding ClothingSize}" materialDesign:HintAssist.Hint="Размер одежды" />
+
+            <Button Content="Загрузить изображение" Command="{Binding LoadImgCommand}" />
+            <Button Content="Сохранить" Command="{Binding SaveCommand}" />
+            <Image Source="{Binding Image}" Stretch="Uniform" Height="400"/>
+        </StackPanel>
     </Grid>
 </Page>

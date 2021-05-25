@@ -7,6 +7,7 @@
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1520"
       Title="MainPage">
+
     <Page.Resources>
         <Style x:Key="buttonAuthor" TargetType="Button">
             <Setter Property="FontSize" Value="24" />
@@ -56,16 +57,16 @@
         </StackPanel>
         <ScrollViewer DockPanel.Dock="Bottom">
             <WrapPanel x:Name="Catalogs" HorizontalAlignment="Center">
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
-                <local:Product Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
+                <local:ProductCard Height="400" Width="300" />
             </WrapPanel>
         </ScrollViewer>
     </DockPanel>

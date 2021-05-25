@@ -6,14 +6,14 @@ namespace LL.Infrastructure
 {
 	public static class Extensions
 	{
-		public static string Rus(this ProductType type)
+		public static string Rus(this ProductTypes type)
 		{
 			switch (type)
 			{
-				case ProductType.Clothing:
+				case ProductTypes.Clothing:
 					return "одежда";
 
-				case ProductType.Shoes:
+				case ProductTypes.Shoes:
 					return "обувь";
 
 				default:

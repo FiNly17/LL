@@ -18,7 +18,7 @@ namespace LL.Models
 		public string Brand { get; set; }
 
 		[Required]
-		public ProductType Type { get; set; }
+		public ProductTypes Type { get; set; }
 
 		public double Price { get; set; }
 
@@ -34,7 +34,7 @@ namespace LL.Models
 			Id = -1;
 		}
 
-		protected Product(string model, string brand, double price, byte[] image, ProductType type)
+		protected Product(string model, string brand, double price, byte[] image, ProductTypes type)
 		{
 			Id = -1;
 
@@ -48,7 +48,7 @@ namespace LL.Models
 		public string ForSearch() => $"{Id} {Model} {Brand} {Type.Rus()} {Price}";
 	}
 
-	public enum ProductType
+	public enum ProductTypes
 	{
 		Clothing,
 		Shoes,
