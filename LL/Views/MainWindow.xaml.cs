@@ -1,39 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace LL.View
+namespace LL.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для Window_Of_Project.xaml
-    /// </summary>
-    public partial class Window_Of_Project : Window
-    {
-		public static Window_Of_Project Instance { get; private set; }
+	/// <summary>
+	/// Логика взаимодействия для Window_Of_Project.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public static MainWindow Instance { get; private set; }
 		public static Pages CurrentPage { get; private set; }
-		public Window_Of_Project()
-        {
-            InitializeComponent();
+
+		public MainWindow()
+		{
+			InitializeComponent();
 			Pages page = Pages.MainPage;
-			Page content1 = new MainPage();
+			Page content1 = new HomePage();
 			CurrentPage = page;
 			MainContent.Content = content1;
 		}
 
-        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
+		private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			Close();
+		}
 
 		public void SwitchPage(Pages page)
 		{
@@ -42,8 +33,9 @@ namespace LL.View
 			switch (page)
 			{
 				case Pages.MainPage:
-					content = new MainPage();
+					content = new HomePage();
 					break;
+
 				case Pages.CatalogPage:
 					content = new CatalogPage();
 					break;
@@ -52,7 +44,7 @@ namespace LL.View
 				//	break;
 				default:
 					MessageBox.Show("Страница не найдена");
-					content = new MainPage();
+					content = new HomePage();
 					break;
 			}
 

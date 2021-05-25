@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LL.View
+namespace LL.ViewModels
 {
-    public enum Pages
-    {
-        MainPage,
-        CatalogPage,
-        OrderPage
-    }
+	internal class RegistrationViewModel : ViewModel
+	{
+	}
 }
