@@ -23,10 +23,10 @@
             </Style>
         </Style.Resources>
     </Style>
-    
+
     <DataTemplate x:Key="Field" DataType="{x:Type models:Shoes}">
         <DataTemplate.Resources>
-            <cmd:Favorite_Command x:Key="FavoriteCommand"/>
+            <cmd:FavoriteCommand x:Key="FavoriteCommand" />
             <cmd:OpenProductCommand x:Key="OpenProductCommand" />
         </DataTemplate.Resources>
         <Border BorderBrush="White" BorderThickness="2">
@@ -49,29 +49,29 @@
                        Grid.Row="0" Margin="-1" />
                     <Image x:Name="Heart" Grid.Row="0" DataContext="{Binding IsFavorite}" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" RenderOptions.BitmapScalingMode="HighQuality">
                         <Image.InputBindings>
-                            <MouseBinding Command="{StaticResource FavoriteCommand}" MouseAction="LeftCLick" CommandParameter="{Binding}"/>
+                            <MouseBinding Command="{StaticResource FavoriteCommand}" MouseAction="LeftCLick" CommandParameter="{Binding}" />
                         </Image.InputBindings>
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_not_add.png" />
+                                <Setter Property="Source" Value="Images/heart_not_add.png" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Path=IsBinding}" Value="False">
-                                        <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart2.png"/>
+                                        <Setter Property="Source" Value="Images/heart2.png" />
                                     </DataTrigger>
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
-                                            <Condition Property="IsMouseOver" Value="True"/>
+                                            <Condition Property="IsMouseOver" Value="True" />
                                         </MultiTrigger.Conditions>
                                         <MultiTrigger.Setters>
-                                            <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_add.png" />
+                                            <Setter Property="Source" Value="Images/heart_add.png" />
                                         </MultiTrigger.Setters>
                                     </MultiTrigger>
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
-                                            <Condition Property="IsMouseOver" Value="False"/>
+                                            <Condition Property="IsMouseOver" Value="False" />
                                         </MultiTrigger.Conditions>
                                         <MultiTrigger.Setters>
-                                            <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_not_add.png" />
+                                            <Setter Property="Source" Value="Images/heart_not_add.png" />
                                         </MultiTrigger.Setters>
                                     </MultiTrigger>
                                 </Style.Triggers>
@@ -97,7 +97,7 @@
                                Padding="5" />
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Size: "
-                               
+
                                VerticalAlignment="Center"
                                FontSize="14"
                                FontWeight="Normal"
@@ -105,7 +105,7 @@
                                TextWrapping="Wrap"
                                Padding="5" />
                                 <TextBlock Text="{Binding Size}"
-                               
+
                                VerticalAlignment="Center"
                                FontSize="14"
                                FontWeight="Normal"

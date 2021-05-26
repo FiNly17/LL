@@ -255,7 +255,7 @@ namespace LL.ViewModels
 		{
 			var dialog = new OpenFileDialog()
 			{
-				Filter = "Картинки| *.png;*.jpg;*.jpeg;*.bmp"
+				Filter = "Картинки| *;*;*;*.bmp"
 			};
 
 			if (dialog.ShowDialog() == true)

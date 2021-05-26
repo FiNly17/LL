@@ -18,7 +18,7 @@ namespace LL.Views
 		private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
 			var img = sender as Image;
-			var uriSource = new Uri("C:\\Studing\\Курсовой проект\\LL\\LL\\Images\\heart2.png");
+			var uriSource = new Uri("C:\\Studing\\Курсовой проект\\LL\\LL\\Images\\heart2");
 			if (img != null)
 				img.Source = new BitmapImage(uriSource);
 		}

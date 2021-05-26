@@ -46,11 +46,11 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Image x:Name="PhotoPr" RenderOptions.BitmapScalingMode="HighQuality" Source="C:\Studing\Курсовой проект\LL\LL\Images\vapormax.png" />
+            <Image x:Name="PhotoPr" RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Resources/vapormax" />
             <Image x:Name="Heart" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" RenderOptions.BitmapScalingMode="HighQuality" MouseLeftButtonDown="Image_MouseLeftButtonDown">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_not_add.png" />
+                        <Setter Property="Source" Value="pack://application:,,,/Resources/heart_not_add" />
                         <Style.Triggers>
 
                             <MultiTrigger>
@@ -58,7 +58,7 @@
                                     <Condition Property="IsMouseOver" Value="True" />
                                 </MultiTrigger.Conditions>
                                 <MultiTrigger.Setters>
-                                    <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_add.png" />
+                                    <Setter Property="Source" Value="pack://application:,,,/Resources/heart_add" />
                                 </MultiTrigger.Setters>
                             </MultiTrigger>
                         </Style.Triggers>

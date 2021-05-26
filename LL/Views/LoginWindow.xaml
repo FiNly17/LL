@@ -105,7 +105,7 @@
             <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/ll.png" />
         </Grid>
         <TextBox Text="{Binding Login}" x:Name="Login" Grid.Row="2" Margin="75,40,75,0" VerticalAlignment="Top"
-                 Style="{StaticResource TB}" VerticalContentAlignment="Center"/>
+                 Style="{StaticResource TB}" VerticalContentAlignment="Center" />
         <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="85,46,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Email или номер телефона">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -118,7 +118,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox Text="{Binding Password}" x:Name="Password" Grid.Row="2" Margin="75,90,75,0" VerticalAlignment="Top" 
+        <TextBox Text="{Binding Password}" x:Name="Password" Grid.Row="2" Margin="75,90,75,0" VerticalAlignment="Top"
                  Style="{StaticResource TB}" VerticalContentAlignment="Center">
         </TextBox>
         <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="85,96,0,0" VerticalAlignment="Top" Text="Пароль">

@@ -6,7 +6,7 @@ using LL.ViewModels;
 namespace LL.Views
 {
 	/// <summary>
-	/// Логика взаимодействия для MainWindow.xaml
+	/// Логика взаимодействия для LoginWindow.xaml
 	/// </summary>
 	public partial class LoginWindow : Window
 	{
