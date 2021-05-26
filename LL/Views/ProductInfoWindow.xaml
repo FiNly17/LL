@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:LL.Views"
       xmlns:vm="clr-namespace:LL.ViewModels"
         mc:Ignorable="d"
-        Title="ProductInfo" Height="500" Width="600" Background="Gray" WindowStyle="None" BorderThickness="0">
+        Title="ProductInfo" Height="600" Width="600" Background="Gray" WindowStyle="None" BorderThickness="0">
 
     <Window.DataContext>
         <vm:ProductInfoViewModel />
@@ -23,37 +23,31 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition Height="180" />
+            <RowDefinition Height="280" />
         </Grid.RowDefinitions>
         <Image Grid.Column="0" Grid.RowSpan="4" Grid.Row="0" Source="{Binding Product.Image}" />
         <StackPanel Grid.Column="1" Grid.RowSpan="4" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Брэнд:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,50,0,0" />
-                <TextBlock Text="Nike" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,50,0,0" />
+                <TextBlock Text="{Binding Product.Brand}" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,50,0,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Модель:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,10,0,0" />
-                <TextBlock Text="AirForce" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
+                <TextBlock Text="{Binding Product.Model}" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Цена:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,10,0,0" />
-                <TextBlock Text="72,00 BYN" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
+                <TextBlock Text="{Binding Product.Price}" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
             </StackPanel>
             <Polygon Fill="Black" Points="5,5,5,7,295,7,295,5"></Polygon>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Тип:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,10,0,0" />
-                <TextBlock Text="Обувь" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
+                <TextBlock Text="{Binding Product.TypeStr}" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
             </StackPanel>
-            <ComboBox Width="250" Margin="0,5,0,0"
-                materialDesign:HintAssist.Hint="Размер"
-                ItemsSource="{Binding ClothingSize}"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Размер:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,10,0,0" />
+                <TextBlock Text="{Binding Product.Sizestr}" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
+            </StackPanel>
             <Grid Margin="15"
                  Width="150">
                 <Button Background="Gray" Foreground="Black"
@@ -65,27 +59,46 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
             <StackPanel x:Name="NewReview_StackPanel">
-                <materialDesign:RatingBar />
-                <TextBox />
-                <Button />
+                <StackPanel Orientation="Horizontal" Margin="25 0">
+                <TextBlock FontSize="20" FontWeight="Medium" Foreground="White" Text="{Binding UserName}"/>
+                <materialDesign:RatingBar Margin="25,3,0,0"
+                             Foreground="GreenYellow"
+                             x:Name="NewReviewRating"
+                             Value="0"  />
+                </StackPanel>
+                <TextBox Margin="25 5" BorderThickness="2" BorderBrush="White" Height="50" />
+                <Button Background="Gray" Foreground="Black"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Height="30" Width="150"
+                        Margin="25,0"
+                HorizontalAlignment="Left"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                ToolTip="MaterialDesignRaisedButton with Round Corners">
+                    <TextBlock Text="Оставить отзыв" />
+                </Button>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalAlignment="Top">
                 <TextBlock Text="Отзывы:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,5,0,0" />
                 <ScrollViewer Height="150">
-                    <ListBox>
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="User" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="25,0,0,0" />
-                                <materialDesign:RatingBar Margin="25,3,0,0"
+                    <ListBox ItemsSource="{Binding Reviews}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding User.FullName}" FontSize="20" FontWeight="Bold" Foreground="White" HorizontalAlignment="Left" Margin="25,0,0,0" />
+                                        <materialDesign:RatingBar Margin="25,3,0,0"
                              Foreground="GreenYellow"
                              x:Name="BasicRatingBar"
                              IsReadOnly="True"
-                             Value="3" />
-                            </StackPanel>
-                            <TextBlock Text="Мне все понравилось, я бы отсосал" FontSize="16" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="25,0,0,0" />
-                        </StackPanel>
+                             Value="{Binding Rating}" />
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding Comment}" FontSize="16" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="25,0,0,0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        
                     </ListBox>
                 </ScrollViewer>
             </StackPanel>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 using LL.Models;
 using LL.Services;
@@ -11,9 +12,12 @@ namespace LL.ViewModels
 
 		public Product Product { get; }
 
+		public string UserName => UserManager.CurrentUser.FullName;
+
 		public bool IsClothing => Product.Type == ProductTypes.Clothing;
 
 		public ClothingSizes ClothingSize => (Product as Clothing).Size;
+		public List<Review> Reviews { get; }
 
 		public double ShoesSize => (Product as Shoes).Size;
 
@@ -23,6 +27,7 @@ namespace LL.ViewModels
 		{
 			Product = InitialProduct;
 			InitialProduct = null;
+			Reviews = DataContext.GetInstance().Reviews.Where(item => item.Product == Product).ToList();
 		}
 	}
 }
