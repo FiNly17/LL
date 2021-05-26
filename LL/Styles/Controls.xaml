@@ -46,37 +46,22 @@
 
                     <Image Source="{Binding Image}" Stretch="Fill"
                        Grid.Row="0" Margin="-1" />
-                    <Image x:Name="Heart" Grid.Row="0" DataContext="{Binding IsFavorite}" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" RenderOptions.BitmapScalingMode="HighQuality">
-                        <Image.InputBindings>
-                            <MouseBinding Command="{StaticResource FavoriteCommand}" MouseAction="LeftCLick" CommandParameter="{Binding}" />
-                        </Image.InputBindings>
-                        <Image.Style>
-                            <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_not_add.png" />
+                    <Button materialDesign:RippleAssist.IsDisabled="True" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-10,10" Width="70" Background="Transparent" BorderThickness="0" Height="35">
+                        <materialDesign:PackIcon Kind="HeartOutline" 
+                                                 HorizontalAlignment="Center"
+                                                 Height="30"
+                                                 Width="30"/>
+                        <Button.Resources>
+                            <Style TargetType="materialDesign:PackIcon">
+                                <Setter Property="Foreground" Value="White"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Path=IsBinding}" Value="False">
-                                        <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart2.png" />
-                                    </DataTrigger>
-                                    <MultiTrigger>
-                                        <MultiTrigger.Conditions>
-                                            <Condition Property="IsMouseOver" Value="True" />
-                                        </MultiTrigger.Conditions>
-                                        <MultiTrigger.Setters>
-                                            <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_add.png" />
-                                        </MultiTrigger.Setters>
-                                    </MultiTrigger>
-                                    <MultiTrigger>
-                                        <MultiTrigger.Conditions>
-                                            <Condition Property="IsMouseOver" Value="False" />
-                                        </MultiTrigger.Conditions>
-                                        <MultiTrigger.Setters>
-                                            <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_not_add.png" />
-                                        </MultiTrigger.Setters>
-                                    </MultiTrigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </Trigger>
                                 </Style.Triggers>
                             </Style>
-                        </Image.Style>
-                    </Image>
+                        </Button.Resources>
+                    </Button>
                     <materialDesign:ColorZone Mode="Dark" Grid.Row="1" VerticalAlignment="Stretch">
                         <StackPanel>
                             <TextBlock Text="{Binding Price, StringFormat=\{0:c\}}"
