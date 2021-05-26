@@ -40,7 +40,7 @@
                         <Label Content="{Binding ElementName=ShoesSize_Slider, Path=Value, Mode=OneWay}" />
                     </StackPanel>
                     <Slider Value="{Binding ShoesSize}" materialDesign:HintAssist.Hint="Размер обуви" Style="{StaticResource MaterialDesignDiscreteHorizontalSlider}"
-                            Minimum="1" Maximum="45" materialDesign:ThemeAssist.Theme="Light" Name="ShoesSize_Slider" />
+                            Minimum="1" Maximum="45" materialDesign:ThemeAssist.Theme="Light" Name="ShoesSize_Slider" Height="79" Margin="0,0,-0.4,0" />
                 </StackPanel>
                 <ComboBox ItemsSource="{Binding ClothingSizesList}" SelectedItem="{Binding ClothingSize}"
                           materialDesign:HintAssist.Hint="Размер одежды" x:Name="ClothingSize_ComboBox" />

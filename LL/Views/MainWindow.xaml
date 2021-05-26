@@ -51,6 +51,12 @@
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button Background="Transparent" BorderThickness="0" Height="45">
+                    <materialDesign:PackIcon Kind="BasketOutline"
+                                             Foreground="White"
+                                             Height="40"
+                                             Width="40"/>
+                </Button>
                 <Image Source="/Images/sv1.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="20,0,0,0" Height="13">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -71,31 +77,24 @@
                     </Style>
                 </Image.Style>
             </Image>
-            <Image x:Name="Image" Margin="10,30,40,30" Source="/Images/close.png" RenderOptions.BitmapScalingMode="HighQuality" MouseDown="Image_MouseDown">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Width" Value="40" />
-                        <Setter Property="Height" Value="40" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Effect">
-                                    <Setter.Value>
-                                        <DropShadowEffect
-                                             BlurRadius="10"
-                                             Color="White"
-                                             Opacity="0.5"
-                                             RenderingBias="Performance"
-                                             ShadowDepth="5" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
+                <Button Background="Transparent" BorderThickness="0" Height="45">
+                    <materialDesign:PackIcon Kind="WindowClose" 
+                                             Height="40"
+                                             Width="40"/>
+                    <Button.Resources>
+                        <Style TargetType="materialDesign:PackIcon">
+                            <Setter Property="Foreground" Value="White"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </StackPanel>
 
-            <Grid Margin="0,0,0,0" Width="150" DockPanel.Dock="Right" HorizontalAlignment="Right">
+            <Grid Margin="0,0,25,0" Width="150" DockPanel.Dock="Right" HorizontalAlignment="Right">
                 <Button x:Name="Profile" Style="{StaticResource btnProfile}" Content="Профиль" />
                 <Image HorizontalAlignment="Left" Margin="7,4,0,0" Height="40" RenderOptions.BitmapScalingMode="HighQuality"  Source="/Images/prof1.png" />
             </Grid>
