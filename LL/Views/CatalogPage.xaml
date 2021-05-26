@@ -61,10 +61,10 @@
             <TextBox Style="{StaticResource TextTB}" Text="Premium" />
         </StackPanel>
         <ScrollViewer DockPanel.Dock="Bottom">
-            <ListBox ItemsSource="{Binding Products}" Background="Pink" ItemTemplate="{StaticResource Field}">
+            <ListBox ItemsSource="{Binding Products}" ItemTemplate="{StaticResource Field}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel IsItemsHost="True" HorizontalAlignment="Center" Background="Green">
+                        <WrapPanel IsItemsHost="True" HorizontalAlignment="Center">
                         </WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
