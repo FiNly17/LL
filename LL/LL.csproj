@@ -94,6 +94,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Commands\Command.cs" />
+    <Compile Include="Infrastructure\Commands\DeleteAdminCommand.cs" />
+    <Compile Include="Infrastructure\Commands\DeleteProductCommand.cs" />
+    <Compile Include="Infrastructure\Commands\EditProductCommand.cs" />
     <Compile Include="Infrastructure\Commands\FavoriteCommand.cs" />
     <Compile Include="Infrastructure\Commands\OpenProductCommand.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />

@@ -5,10 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LL.Views"
         xmlns:vm="clr-namespace:LL.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="AdminRegistrationWindow" Height="450" Width="800">
+        Title="AdminRegistrationWindow" Height="550" Width="400" WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <vm:AdminRegistrationViewModel />
     </Window.DataContext>
+
+    <StackPanel Margin="40 10">
+        <StackPanel.Resources>
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                <Setter Property="Margin" Value="0 20 0 0"/>
+            </Style>
+        </StackPanel.Resources>
+        <TextBox materialDesign:HintAssist.Hint="Логин" Margin="0">
+            <TextBox.Text>
+                <Binding Path="Login" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox materialDesign:HintAssist.Hint="Пароль">
+            <TextBox.Text>
+                <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox materialDesign:HintAssist.Hint="Почта">
+            <TextBox.Text>
+                <Binding Path="EMail" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox materialDesign:HintAssist.Hint="Телефон">
+            <TextBox.Text>
+                <Binding Path="Phone" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox materialDesign:HintAssist.Hint="фамилия">
+            <TextBox.Text>
+                <Binding Path="Surname" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox materialDesign:HintAssist.Hint="Имя">
+            <TextBox.Text>
+                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox materialDesign:HintAssist.Hint="Отчество">
+            <TextBox.Text>
+                <Binding Path="MiddleName" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button Content="Добавить" Margin="0 50 0 0" Command="{Binding RegistrationCommand}"/>
+    </StackPanel>
 </Window>

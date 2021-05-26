@@ -17,6 +17,9 @@ namespace LL.Views
 
 		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			if (ShoesSize_Stackpanel == null || ClothingSize_ComboBox == null)
+				return;
+
 			var index = (sender as ComboBox).SelectedIndex;
 			switch (index)
 			{

@@ -89,7 +89,7 @@ namespace LL.Services
 
 				var hashedPassword = HashPassword(password);
 
-				db.Accounts.Add(new Admin(login, hashedPassword, email, phone, surname, name, middleName));
+				db.Accounts.Add(new Admin(login, hashedPassword, email, phone, surname, name, middleName) { Type = AdminType.Minor});
 				db.SaveChanges();
 
 				return (true, null);

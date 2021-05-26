@@ -6,6 +6,7 @@ using LL.Infrastructure.Commands;
 using LL.Models;
 
 using LL.Services;
+using LL.Views;
 
 namespace LL.ViewModels
 {
@@ -33,12 +34,26 @@ namespace LL.ViewModels
 
 		private static bool CanSearchCommandExecute(object p) => true;
 
+		public ICommand NewAdminCommand { get; set; }
+
+		private void OnNewAdminCommandExecuted(object p) => NewAdmin();
+
+		private static bool CanNewAdminCommandExecute(object p) => (UserManager.CurrentUser as Admin).Type == AdminType.Major;
+
 		public AdminsTableViewModel()
 		{
 			SearchCommand = new RelayCommand(OnSearchCommandExecuted, CanSearchCommandExecute);
+			NewAdminCommand = new RelayCommand(OnNewAdminCommandExecuted, CanNewAdminCommandExecute);
 			Search();
 		}
 
 		private void Search() => SearchResult = DataContext.SearchAdmins(Query);
+
+		private void NewAdmin()
+		{
+			var window = new AdminRegistrationWindow();
+			window.ShowDialog();
+			Search();
+		}
 	}
 }

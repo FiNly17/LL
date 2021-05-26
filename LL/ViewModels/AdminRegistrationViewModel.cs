@@ -6,6 +6,7 @@ using LL.Infrastructure.Commands;
 
 using LL.Services;
 using System.ComponentModel;
+using LL.Models;
 
 namespace LL.ViewModels
 {
@@ -73,7 +74,7 @@ namespace LL.ViewModels
 
 		public ICommand RegistrationCommand { get; set; }
 
-		private static bool CanRegistrationCommandExecute(object p) => UserManager.CurrentUser == null;
+		private static bool CanRegistrationCommandExecute(object p) => (UserManager.CurrentUser as Admin).Type == AdminType.Major;
 
 		private void OnRegistrationCommandExecuted(object p) => ProcessRegistration();
 
@@ -153,7 +154,7 @@ namespace LL.ViewModels
 						if (string.IsNullOrEmpty(EMail))
 							return "Введите почту";
 
-						var (isValid, forbiddenSymbols) = Validator.Validate(EMail, Validator.eMailRegex);
+						var (isValid, _) = Validator.Validate(EMail, Validator.eMailRegex);
 						if (!isValid)
 							return "Введённая строка не является электронной почтой";
 					}
@@ -164,7 +165,7 @@ namespace LL.ViewModels
 						if (string.IsNullOrEmpty(Phone))
 							return "Введите телефон";
 
-						var (isValid, forbiddenSymbols) = Validator.Validate(Phone, Validator.phoneRegex);
+						var (isValid, _) = Validator.Validate(Phone, Validator.phoneRegex);
 
 						if (!isValid)
 							return "Введённая строка не является телефоном";
@@ -174,7 +175,7 @@ namespace LL.ViewModels
 				case "Surname":
 					{
 						if (string.IsNullOrEmpty(Surname))
-							return "Введите почту";
+							return "Введите фамилию";
 
 						var (isValid, forbiddenSymbols) = Validator.Validate(Surname, Validator.nameRegex);
 
@@ -186,7 +187,7 @@ namespace LL.ViewModels
 				case "Name":
 					{
 						if (string.IsNullOrEmpty(Name))
-							return "Введите почту";
+							return "Введите имя";
 
 						var (isValid, forbiddenSymbols) = Validator.Validate(Name, Validator.nameRegex);
 
@@ -198,7 +199,7 @@ namespace LL.ViewModels
 				case "MiddleName":
 					{
 						if (string.IsNullOrEmpty(MiddleName))
-							return "Введите почту";
+							return "Введите отчество";
 
 						var (isValid, forbiddenSymbols) = Validator.Validate(MiddleName, Validator.nameRegex);
 
