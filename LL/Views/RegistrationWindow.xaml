@@ -79,17 +79,17 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Grid.ColumnSpan="2" Opacity="0.3" Grid.Row="0" Grid.RowSpan="5" gif:ImageBehavior.AnimatedSource="pack://application:,,,/Resources/lightning" />
+        <Image Grid.Column="0" Grid.ColumnSpan="2" Opacity="0.3" Grid.Row="0" Grid.RowSpan="5" gif:ImageBehavior.AnimatedSource="/Images/lightning.gif" />
         <Grid Grid.Column="0" Grid.ColumnSpan="2" Name="ToolBar" Background="Transparent" MouseDown="ToolBar_MouseDown">
             <Polygon Fill="White" Opacity="0.2" Points="125,0,133,7,467,7,475,0" />
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
                 <Image Name="Sv" Width="13" Height="13" Margin="2" MouseDown="Sv_MouseDown">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="pack://application:,,,/Resources/sv.png" />
+                            <Setter Property="Source" Value="/Images/sv.png" />
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding IsMouseOver, ElementName= Sv}" Value="True">
-                                    <Setter Property="Source" Value="pack://application:,,,/Resources/sv_act.png" />
+                                    <Setter Property="Source" Value="/Images/sv_act.png" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -101,10 +101,10 @@
                 <Image Name="ExitButton" Width="13" Height="13" Margin="0,0,3,0" MouseDown="ExitButton_MouseDown">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="pack://application:,,,/Resources/crest_non_active.png" />
+                            <Setter Property="Source" Value="/Images/crest_non_active.png" />
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding IsMouseOver, ElementName= ExitButton}" Value="True">
-                                    <Setter Property="Source" Value="pack://application:,,,/Resources/crest_active.png" />
+                                    <Setter Property="Source" Value="/Images/crest_active.png" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -117,8 +117,8 @@
         </Grid>
         <Grid Background="Transparent" Grid.Row="1" Grid.ColumnSpan="2" Name="Logo">
             <StackPanel>
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Resources/ll.png" />
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Width="300" VerticalAlignment="Top" Source="pack://application:,,,/Resources/slog.png" />
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/ll.png" />
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Width="300" VerticalAlignment="Top" Source="/Images/slog.png" />
             </StackPanel>
         </Grid>
         <TextBox Text="{Binding Login}" x:Name="Login" Grid.Column="0" Grid.Row="2" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />

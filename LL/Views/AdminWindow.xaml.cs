@@ -47,9 +47,11 @@ namespace LL.Views
 					break;
 
 				case AdminPages.Orders:
+					content = new OrdersTablePage();
 					break;
 
 				case AdminPages.OrdersHistory:
+					content = new OrdersHistoryPage();
 					break;
 
 				default:
@@ -70,12 +72,8 @@ namespace LL.Views
 
 		private void Admins_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(AdminPages.Admins);
 
-		private void Orders_Button_Click(object sender, RoutedEventArgs e)
-		{
-		}
+		private void Orders_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(AdminPages.Orders);
 
-		private void OrdersHistory_Button_Click(object sender, RoutedEventArgs e)
-		{
-		}
+		private void OrdersHistory_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(AdminPages.OrdersHistory);
 	}
 }

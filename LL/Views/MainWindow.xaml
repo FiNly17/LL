@@ -35,23 +35,23 @@
     </Window.Resources>
     <DockPanel>
 
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Right" Height="100">
-            <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
+        <DockPanel DockPanel.Dock="Top" Height="100">
+            <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left" Orientation="Horizontal" Margin="20 0 0 0">
+                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" FontWeight="Regular"
                             Margin="4,30,50,10" IsChecked="True" Content="Главная"
                                  x:Name="Places_Button" Height="Auto" Click="MainPage_Button_Click" />
-            <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
+                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" Margin="50,30,50,10"
                              Content="Каталог" Height="Auto" FontWeight="Regular"
                                 x:Name="Catalog_Button" Click="Catalog_Button_Click" />
-            <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
+                <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" Margin="50,34,0,10"
                              Content="Избранное" Height="Auto" FontWeight="Regular" />
-            <Grid Margin="570,0,0,0" Width="150">
-                <Button x:Name="Profile" Style="{StaticResource btnProfile}" Content="Профиль" />
-                <Image HorizontalAlignment="Left" Margin="7,4,0,0" Height="40" RenderOptions.BitmapScalingMode="HighQuality"  Source="/Images/prof1.png" />
-            </Grid>
-            <Image Source="/Images/sv1.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="20,0,0,0" Height="13">
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Image Source="/Images/sv1.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="20,0,0,0" Height="13">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Style.Triggers>
@@ -71,8 +71,7 @@
                     </Style>
                 </Image.Style>
             </Image>
-            <materialDesign:PackIcon Kind="CLose" Margin="10,30,40,30" />
-            <Image x:Name="Image" Margin="10,30,40,30" Source="/Images/close" RenderOptions.BitmapScalingMode="HighQuality" MouseDown="Image_MouseDown">
+            <Image x:Name="Image" Margin="10,30,40,30" Source="/Images/close.png" RenderOptions.BitmapScalingMode="HighQuality" MouseDown="Image_MouseDown">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Width" Value="40" />
@@ -94,7 +93,13 @@
                     </Style>
                 </Image.Style>
             </Image>
-        </StackPanel>
+            </StackPanel>
+
+            <Grid Margin="0,0,0,0" Width="150" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="Profile" Style="{StaticResource btnProfile}" Content="Профиль" />
+                <Image HorizontalAlignment="Left" Margin="7,4,0,0" Height="40" RenderOptions.BitmapScalingMode="HighQuality"  Source="/Images/prof1.png" />
+            </Grid>
+        </DockPanel>
 
         <Frame x:Name="MainContent" DockPanel.Dock="Bottom" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" />
     </DockPanel>

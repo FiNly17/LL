@@ -149,11 +149,11 @@
       <DependentUpon>OrdersTablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages.cs" />
-    <Compile Include="Views\ProductEditor.xaml.cs">
-      <DependentUpon>ProductEditor.xaml</DependentUpon>
+    <Compile Include="Views\ProductEditorPage.xaml.cs">
+      <DependentUpon>ProductEditorPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductInfo.xaml.cs">
-      <DependentUpon>ProductInfo.xaml</DependentUpon>
+    <Compile Include="Views\ProductInfoPage.xaml.cs">
+      <DependentUpon>ProductInfoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductsTablePage.xaml.cs">
       <DependentUpon>ProductsTablePage.xaml</DependentUpon>
@@ -211,11 +211,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ProductEditor.xaml">
+    <Page Include="Views\ProductEditorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ProductInfo.xaml">
+    <Page Include="Views\ProductInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -259,6 +259,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Data\Lightning.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Images\ll.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

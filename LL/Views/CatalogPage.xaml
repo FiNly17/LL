@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:LL.Views"
       xmlns:vm="clr-namespace:LL.ViewModels"
       mc:Ignorable="d"
-      d:DesignHeight="600" d:DesignWidth="1520"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="MainPage">
 
     <Page.DataContext>

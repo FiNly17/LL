@@ -45,8 +45,8 @@ namespace LL.Models
 	public enum OrderStatuses
 	{
 		AwaitingConfirmation,
+		Declined,
 		DeliveryInProgress,
-		Delivered,
-		Declined
+		Delivered
 	}
 }

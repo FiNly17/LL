@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace LL.Services
 
 		static DataContext()
 		{
-			connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+			connectionString = ConfigurationManager.ConnectionStrings["DbConnectionCHIS"].ConnectionString;
 
 			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
 		}
@@ -83,7 +82,7 @@ namespace LL.Services
 				var tags = query.Split(' ');
 
 				return GetUsers().Where(user =>
-						tags.All(tag => user.ForSearch().ToLower().Contains(tag))).ToList();
+						tags.All(tag => user.ForSearch().Contains(tag))).ToList();
 			}
 			else
 				return GetUsers();
@@ -98,7 +97,7 @@ namespace LL.Services
 				var tags = query.Split(' ');
 
 				return GetInstance().Accounts.ToList().Where(account => account.AccountType == AccountType.Admin &&
-						tags.All(tag => account.ForSearch().ToLower().Contains(tag))).Cast<Admin>().ToList();
+						tags.All(tag => account.ForSearch().Contains(tag))).Cast<Admin>().ToList();
 			}
 			else
 				return GetInstance().Accounts.ToList().Where(account => account.AccountType == AccountType.Admin).Cast<Admin>().ToList();
@@ -116,49 +115,62 @@ namespace LL.Services
 				{
 					case ProductTypes.Clothing:
 						return GetInstance().Products.ToList().Where(product => product.Type == ProductTypes.Clothing &&
-					tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
+					tags.All(tag => product.ForSearch().Contains(tag))).ToList();
 
 					case ProductTypes.Shoes:
 						return GetInstance().Products.ToList().Where(product => product.Type == ProductTypes.Shoes &&
-					tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
+					tags.All(tag => product.ForSearch().Contains(tag))).ToList();
 
 					default:
 						return GetInstance().Products.ToList().Where(product =>
-						   tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
+						   tags.All(tag => product.ForSearch().Contains(tag))).ToList();
 				}
 			}
 			else
 				return GetInstance().Products.ToList();
 		}
 
-		public static List<Order> SearchOrders(string query, bool deliveredOnly)
+		public static List<Order> SearchOrders(string query, bool closed)
 		{
 			query = query?.ToLower();
 
-			if (deliveredOnly)
+			// Закрытые
+			if (closed)
 			{
 				if (!string.IsNullOrEmpty(query))
 				{
 					var tags = query.Split(' ');
 
-					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin &&
-							tags.All(tag => account.ForSearch().ToLower().Contains(tag))).Cast<Admin>().ToList();
+					return GetInstance().Orders.ToList().Where(order =>
+					(order.Status == OrderStatuses.Declined || order.Status == OrderStatuses.Delivered) &&
+							tags.All(tag => order.ForSearch().Contains(tag))).ToList();
 				}
 				else
-					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin).Cast<Admin>().ToList();
+					return GetInstance().Orders.ToList().Where(order =>
+					order.Status == OrderStatuses.Declined || order.Status == OrderStatuses.Delivered).ToList();
 			}
+			// Не закрытые
 			else
 			{
 				if (!string.IsNullOrEmpty(query))
 				{
 					var tags = query.Split(' ');
 
-					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin &&
-							tags.All(tag => account.ForSearch().ToLower().Contains(tag))).Cast<Admin>().ToList();
+					return GetInstance().Orders.ToList().Where(order =>
+					(order.Status == OrderStatuses.AwaitingConfirmation || order.Status == OrderStatuses.DeliveryInProgress) &&
+							tags.All(tag => order.ForSearch().Contains(tag))).ToList();
 				}
 				else
-					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin).Cast<Admin>().ToList();
+					return GetInstance().Orders.ToList().Where(order =>
+					order.Status == OrderStatuses.AwaitingConfirmation || order.Status == OrderStatuses.DeliveryInProgress).ToList();
 			}
+		}
+
+		public static void ChangeOrderStatus(Order order, OrderStatuses status)
+		{
+			var ctx = GetInstance().Orders.Find(order.Id);
+			ctx.Status = status;
+			GetInstance().SaveChanges();
 		}
 
 		#endregion Methods
