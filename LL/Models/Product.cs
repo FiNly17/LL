@@ -34,6 +34,12 @@ namespace LL.Models
 		public string FullName => $"{Brand} {Model}";
 
 		[NotMapped]
+		public string TypeStr => Type.Rus();
+
+		[NotMapped]
+		public string Sizestr => Type == ProductTypes.Clothing ? (this as Clothing).Size.ToString() : (this as Shoes).Size.ToString();
+
+		[NotMapped]
 		public bool IsFavorite => (UserManager.CurrentUser as User).Bookmarks.Any(item => item == this);
 
 		public Product() => Id = -1;
