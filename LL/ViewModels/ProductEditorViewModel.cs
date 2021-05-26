@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -26,9 +23,11 @@ namespace LL.ViewModels
 
 		public string State { get => IsEditing ? "Редактирование товара" : "Добавление товара"; }
 
-		public List<ProductTypes> ProductTypesList => Enum.GetValues(typeof(ProductTypes)).Cast<ProductTypes>().ToList();
+		public List<ProductTypes> ProductTypesList => Enum.GetValues(typeof(ProductTypes))
+			.Cast<ProductTypes>().Where(type => type != ProductTypes.None).ToList();
 
-		public List<ClothingSizes> ClothingSizesList => Enum.GetValues(typeof(ClothingSizes)).Cast<ClothingSizes>().ToList();
+		public List<ClothingSizes> ClothingSizesList => Enum.GetValues(typeof(ClothingSizes))
+			.Cast<ClothingSizes>().Where(type => type != ClothingSizes.None).ToList();
 
 		public int Id { get; }
 
@@ -181,8 +180,17 @@ namespace LL.ViewModels
 
 			errors += Validate("Model") + "\n";
 			errors += Validate("Brand") + "\n";
-			errors += Validate("Genre") + "\n";
-			errors += Validate("Amt") + "\n";
+			errors += Validate("Price") + "\n";
+			errors += Validate("Type") + "\n";
+			if (Type == ProductTypes.None)
+			{
+				errors += "Укажите тип товара";
+				return errors;
+			}
+			if (Type == ProductTypes.Clothing)
+				errors += Validate("ClothingSize");
+			else
+				errors += Validate("ShoesSize");
 
 			return errors.Trim();
 		}
@@ -191,8 +199,6 @@ namespace LL.ViewModels
 		{
 			if (columnName == null)
 				return string.Empty;
-
-			string error = string.Empty;
 
 			switch (columnName)
 			{
@@ -207,13 +213,6 @@ namespace LL.ViewModels
 					{
 						if (string.IsNullOrEmpty(Brand))
 							return "Введите название брэнда";
-					}
-					break;
-
-				case "Type":
-					{
-						if (Type == ProductTypes.None)
-							return "Укажите тип товара";
 					}
 					break;
 

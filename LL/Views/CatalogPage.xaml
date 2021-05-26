@@ -65,8 +65,6 @@
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel IsItemsHost="True">
-
-
                         </WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>

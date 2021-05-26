@@ -20,23 +20,30 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <materialDesign:Card  Grid.Column="0" Margin="10">
-            <StackPanel>
+            <StackPanel Margin="40 20">
                 <StackPanel.Resources>
                     <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
                         <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Margin" Value="0 10" />
                     </Style>
                     <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
                         <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Margin" Value="0 10" />
                     </Style>
                 </StackPanel.Resources>
                 <TextBox Text="{Binding Model}" materialDesign:HintAssist.Hint="Модель" />
                 <TextBox Text="{Binding Brand}" materialDesign:HintAssist.Hint="Брэнд" />
                 <TextBox Text="{Binding Price}" materialDesign:HintAssist.Hint="Цена" />
-                <ComboBox ItemsSource="{Binding ProductTypes}" SelectedItem="{Binding ProductType}" materialDesign:HintAssist.Hint="Тип продукта" />
-                <TextBox Text="{Binding ShoesSize}" materialDesign:HintAssist.Hint="Размер обуви" />
-                <ComboBox ItemsSource="{Binding ClothingSizes}" SelectedItem="{Binding ClothingSize}" materialDesign:HintAssist.Hint="Размер одежды" />
+                <ComboBox ItemsSource="{Binding ProductTypesList}" SelectedItem="{Binding Type}" materialDesign:HintAssist.Hint="Тип продукта"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="ComboBox_SelectionChanged" />
+                <StackPanel>
+                    <Label Content="Размер обуви" />
+                    <Slider Value="{Binding ShoesSize}" materialDesign:HintAssist.Hint="Размер обуви" />
+                </StackPanel>
+                <ComboBox ItemsSource="{Binding ClothingSizesList}" SelectedItem="{Binding ClothingSize}" materialDesign:HintAssist.Hint="Размер одежды"
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
 
-                <Button Content="Сохранить" Command="{Binding SaveCommand}" />
+                <Button Content="Сохранить" Command="{Binding SaveCommand}" Margin="0 10" />
             </StackPanel>
         </materialDesign:Card>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
