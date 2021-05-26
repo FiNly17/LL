@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 
 using LL.ViewModels;
+using LL.Services;
+using LL.Models;
 
 namespace LL.Views
 {
@@ -15,5 +17,6 @@ namespace LL.Views
 			if ((DataContext as ProductInfoViewModel).IsReviewed)
 				NewReview_StackPanel.Visibility = Visibility.Collapsed;
 		}
-	}
+
+    }
 }

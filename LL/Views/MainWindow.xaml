@@ -51,13 +51,13 @@
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
-                <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="45">
+                <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="45" Click="Basket_Window_Click">
                     <materialDesign:PackIcon Kind="BasketOutline"
                                              Foreground="White"
                                              Height="40"
                                              Width="40"/>
                 </Button>
-                <Button materialDesign:RippleAssist.IsDisabled="True" Margin="0,0,-10,0" Background="Transparent" BorderThickness="0" Height="45">
+                <Button materialDesign:RippleAssist.IsDisabled="True" Margin="0,0,-10,0" Background="Transparent" BorderThickness="0" Height="45" Click="MinimizeWindow_Button_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize" 
                                              Height="40"
                                              Width="40"/>
@@ -72,7 +72,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="45">
+                <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="45" Click="Close_Button_Click">
                     <materialDesign:PackIcon Kind="WindowClose" 
                                              Height="40"
                                              Width="40"/>

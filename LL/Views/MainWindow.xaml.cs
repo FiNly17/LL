@@ -51,6 +51,15 @@ namespace LL.Views
 			CurrentPage = page;
 			MainContent.Content = content;
 		}
+		private void MinimizeWindow_Button_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+
+		private void Basket_Window_Click(object sender, RoutedEventArgs e)
+        {
+			BasketWindow bw = new BasketWindow();
+			bw.Show();
+        }
+
+		private void Close_Button_Click(object sender, RoutedEventArgs e) => Close();
 
 		private void MainPage_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.MainPage);
 
