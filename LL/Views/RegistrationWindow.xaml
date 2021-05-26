@@ -84,33 +84,35 @@
         <Grid Grid.Column="0" Grid.ColumnSpan="2" Name="ToolBar" Background="Transparent" MouseDown="ToolBar_MouseDown">
             <Polygon Fill="White" Opacity="0.2" Points="125,0,133,7,467,7,475,0" />
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
-                <Button materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Height="20" Padding="0 0">
+                <Button materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Height="20" Padding="0 0"
+                        x:Name="Minimize_Button" Click="Minimize_Button_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize"
                                              Margin="0 0"
                                              Width="20"
-                                             Height="20"/>
+                                             Height="20" />
                     <Button.Resources>
                         <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="Foreground" Value="DimGray"/>
+                            <Setter Property="Foreground" Value="DimGray" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Foreground" Value="White" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="20" Padding="0">
+                <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="20" Padding="0"
+                        x:Name="Close_Button" Click="Close_Button_Click">
                     <materialDesign:PackIcon Kind="WindowClose"
                                              Margin="0, 0,5,0"
                                              Width="20"
-                                             Height="20"/>
+                                             Height="20" />
                     <Button.Resources>
                         <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="Foreground" Value="DimGray"/>
+                            <Setter Property="Foreground" Value="DimGray" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Foreground" Value="White" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

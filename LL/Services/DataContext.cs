@@ -15,7 +15,7 @@ namespace LL.Services
 
 		static DataContext()
 		{
-			connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+			connectionString = ConfigurationManager.ConnectionStrings["DbConnectionCHIS"].ConnectionString;
 
 			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
 		}
@@ -64,6 +64,8 @@ namespace LL.Services
 		public DbSet<Product> Products { get; set; }
 
 		public DbSet<Order> Orders { get; set; }
+
+		public DbSet<Review> Reviews { get; set; }
 
 		#endregion Tables
 

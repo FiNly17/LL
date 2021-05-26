@@ -2,7 +2,7 @@
 
 namespace LL.Infrastructure.Commands
 {
-	internal class OpenProductCommand : Command
+	public class OpenProductCommand : Command
 	{
 		public override bool CanExecute(object parameter)
 		{

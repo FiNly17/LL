@@ -13,6 +13,8 @@ namespace LL.Models
 
 		public virtual List<Product> Bookmarks { get; set; } = new List<Product>();
 
+		public virtual List<Review> Reviews { get; set; } = new List<Review>();
+
 		[NotMapped]
 		public List<Product> Basket { get; set; } = new List<Product>();
 

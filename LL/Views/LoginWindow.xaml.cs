@@ -16,10 +16,6 @@ namespace LL.Views
 			(DataContext as LoginViewModel).CloseRequest += (sender, e) => Close();
 		}
 
-		private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e) => Close();
-
-		private void Sv_MouseDown(object sender, MouseButtonEventArgs e) => WindowState = WindowState.Minimized;
-
 		private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			if (e.ChangedButton == MouseButton.Left)
@@ -31,9 +27,12 @@ namespace LL.Views
 			if (e.ChangedButton == MouseButton.Left)
 			{
 				RegistrationWindow reg = new RegistrationWindow();
-				reg.Show();
-				Close();
+				reg.ShowDialog();
 			}
 		}
+
+		private void MinimizeWindow_Button_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+
+		private void Close_Button_Click(object sender, RoutedEventArgs e) => Close();
 	}
 }

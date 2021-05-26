@@ -6,7 +6,7 @@ using LL.ViewModels;
 namespace LL.Views
 {
 	/// <summary>
-	/// Логика взаимодействия для MainWindow.xaml
+	/// Логика взаимодействия для RegistrationWindow.xaml
 	/// </summary>
 	public partial class RegistrationWindow : Window
 	{
@@ -16,41 +16,14 @@ namespace LL.Views
 			(DataContext as RegistrationViewModel).CloseRequest += (sender, e) => Close();
 		}
 
-		private void ExitButton_MouseDown(object sender, MouseButtonEventArgs e)
-		{
-			Close();
-		}
-
-		private void Sv_MouseDown(object sender, MouseButtonEventArgs e)
-		{
-			WindowState = WindowState.Minimized;
-		}
-
 		private void ToolBar_MouseDown(object sender, MouseButtonEventArgs e)
 		{
 			if (e.ChangedButton == MouseButton.Left)
 				DragMove();
 		}
 
-		public bool IsExists(object sender, object sender2)
-		{
-			return true;
-		}
+		private void Minimize_Button_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
 
-		private void Authoris_Click(object sender, RoutedEventArgs e)
-		{
-		}
-
-		private void Reg_Click(object sender, RoutedEventArgs e)
-		{
-		}
-
-		private void myButton_MouseDown(object sender, MouseButtonEventArgs e)
-		{
-			MessageBox.Show("Logged in!", "Success");
-			MainWindow window1 = new MainWindow();
-			window1.Show();
-			Close();
-		}
+		private void Close_Button_Click(object sender, RoutedEventArgs e) => Close();
 	}
 }
