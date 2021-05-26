@@ -53,17 +53,17 @@
                         </Image.InputBindings>
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="Images/heart_not_add.png" />
+                                <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_not_add.png" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Path=IsBinding}" Value="False">
-                                        <Setter Property="Source" Value="Images/heart2.png" />
+                                        <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart2.png" />
                                     </DataTrigger>
                                     <MultiTrigger>
                                         <MultiTrigger.Conditions>
                                             <Condition Property="IsMouseOver" Value="True" />
                                         </MultiTrigger.Conditions>
                                         <MultiTrigger.Setters>
-                                            <Setter Property="Source" Value="Images/heart_add.png" />
+                                            <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_add.png" />
                                         </MultiTrigger.Setters>
                                     </MultiTrigger>
                                     <MultiTrigger>
@@ -71,7 +71,7 @@
                                             <Condition Property="IsMouseOver" Value="False" />
                                         </MultiTrigger.Conditions>
                                         <MultiTrigger.Setters>
-                                            <Setter Property="Source" Value="Images/heart_not_add.png" />
+                                            <Setter Property="Source" Value="C:\Studing\Курсовой проект\LL\LL\Images\heart_not_add.png" />
                                         </MultiTrigger.Setters>
                                     </MultiTrigger>
                                 </Style.Triggers>

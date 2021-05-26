@@ -116,6 +116,7 @@
     <Compile Include="Services\Basket.cs" />
     <Compile Include="Services\DataContext.cs" />
     <Compile Include="Services\Logger.cs" />
+    <Compile Include="Services\SMTPClient.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Services\Validator.cs" />
     <Compile Include="ViewModels\AdminsTableViewModel.cs" />
@@ -150,6 +151,9 @@
     <Compile Include="Views\Pages.cs" />
     <Compile Include="Views\ProductEditor.xaml.cs">
       <DependentUpon>ProductEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductInfo.xaml.cs">
+      <DependentUpon>ProductInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProductsTablePage.xaml.cs">
       <DependentUpon>ProductsTablePage.xaml</DependentUpon>
@@ -208,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

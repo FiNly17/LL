@@ -33,7 +33,7 @@
     </Page.Resources>
     <ScrollViewer>
         <StackPanel>
-            <Image Width="900" RenderOptions.BitmapScalingMode="HighQuality" Source="pack://application:,,,/Resources/ll.png" />
+            <Image Width="900" RenderOptions.BitmapScalingMode="HighQuality" Source="C:\Studing\Курсовой проект\LL\LL\Images\ll.png" />
             <MediaElement Height="300" VerticalAlignment="Top" x:Name="SCARLXRD" LoadedBehavior="Play" RenderOptions.BitmapScalingMode="HighQuality" Source="Images\scarlxrd - EVIL EGX.mp4" Stretch="UniformToFill" UnloadedBehavior="Play" />
             <TextBox Margin="0,-400,0,0" Width="350" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="70" FontWeight="Medium"  HorizontalAlignment="Center"  Text="SCARLXRD" Height="90" />
             <Button Style="{StaticResource buttonAuthor}" Margin="0,-200,0,0" Content="Перейти" x:Name="GoesSL" />
@@ -44,9 +44,9 @@
             <TextBox Margin="0,-400,0,0" Width="420" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="70" FontWeight="Medium" HorizontalAlignment="Center"  Text="$uicide Boy$" Height="90" />
             <Button Style="{StaticResource buttonAuthor}" Margin="0,-200,0,0" Content="Перейти" x:Name="GoesSS" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="pack://application:,,,/Resources/inst.png" RenderOptions.BitmapScalingMode="HighQuality"  Height="30" />
-                <Image Source="pack://application:,,,/Resources/fb.png" Margin="5,0,0,0" RenderOptions.BitmapScalingMode="HighQuality"  Height="30" />
-                <Image Source="pack://application:,,,/Resources/vk.png" RenderOptions.BitmapScalingMode="HighQuality"  Height="40" />
+                <Image Source="C:\Studing\Курсовой проект\LL\LL\Images\inst.png" RenderOptions.BitmapScalingMode="HighQuality"  Height="30" />
+                <Image Source="C:\Studing\Курсовой проект\LL\LL\Images\fb.png" Margin="5,0,0,0" RenderOptions.BitmapScalingMode="HighQuality"  Height="30" />
+                <Image Source="C:\Studing\Курсовой проект\LL\LL\Images\vk.png" RenderOptions.BitmapScalingMode="HighQuality"  Height="40" />
             </StackPanel>
             <TextBox HorizontalAlignment="Center" FontSize="19" Margin="0,40,0,0" Foreground="FloralWhite" Opacity="0.7">Copyright © 2021. Scarlxrd LTD. All Rights Reserved</TextBox>
         </StackPanel>
