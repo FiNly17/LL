@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 using LL.Infrastructure;
+using LL.Services;
 
 namespace LL.Models
 {
@@ -28,6 +30,9 @@ namespace LL.Models
 
 		[NotMapped]
 		public string FullName => $"{Brand} {Model}";
+
+		[NotMapped]
+		public bool IsFavorite => (UserManager.CurrentUser as User).Bookmarks.Any(item => item ==this);
 
 		public Product()
 		{
