@@ -119,6 +119,7 @@
     <Compile Include="Services\SMTPClient.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Services\Validator.cs" />
+    <Compile Include="ViewModels\AdminRegistrationViewModel.cs" />
     <Compile Include="ViewModels\AdminsTableViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\CatalogViewModel.cs" />
@@ -129,6 +130,9 @@
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\UsersTableViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\AdminRegistrationWindow.xaml.cs">
+      <DependentUpon>AdminRegistrationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminsTablePage.xaml.cs">
       <DependentUpon>AdminsTablePage.xaml</DependentUpon>
     </Compile>
@@ -172,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Pallete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminRegistrationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

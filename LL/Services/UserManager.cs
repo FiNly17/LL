@@ -72,6 +72,34 @@ namespace LL.Services
 			}
 		}
 
+		public static (bool result, string error) RegisterAdmin(string login, string password, string email, string phone, string surname, string name, string middleName)
+		{
+			try
+			{
+				var db = DataContext.GetInstance();
+
+				if (db.Accounts.Any(item => item.Login == login))
+					return (false, "Логин уже занят");
+
+				if (db.Accounts.Any(item => item.EMail == email))
+					return (false, "Почта уже занята");
+
+				if (db.Accounts.Any(item => item.Phone == phone))
+					return (false, "Телефон уже занят");
+
+				var hashedPassword = HashPassword(password);
+
+				db.Accounts.Add(new Admin(login, hashedPassword, email, phone, surname, name, middleName));
+				db.SaveChanges();
+
+				return (true, null);
+			}
+			catch
+			{
+				return (false, "Не удалось зарегистрироваться");
+			}
+		}
+
 		public static string HashPassword(string password)
 		{
 			var hashBytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(password));

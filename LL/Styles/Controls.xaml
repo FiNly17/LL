@@ -4,6 +4,9 @@
                     xmlns:models="clr-namespace:LL.Models"
                     xmlns:cmd="clr-namespace:LL.Infrastructure.Commands">
 
+    <cmd:FavoriteCommand x:Key="FavoriteCommand" />
+    <cmd:OpenProductCommand x:Key="OpenProductCommand" />
+
     <Style x:Key="ButtonWithIcon" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
         <Style.Resources>
             <Style TargetType="StackPanel">
@@ -25,10 +28,6 @@
     </Style>
 
     <DataTemplate x:Key="Field" DataType="{x:Type models:Shoes}">
-        <DataTemplate.Resources>
-            <cmd:FavoriteCommand x:Key="FavoriteCommand" />
-            <cmd:OpenProductCommand x:Key="OpenProductCommand" />
-        </DataTemplate.Resources>
         <Border BorderBrush="White" BorderThickness="2">
             <materialDesign:Card Width="250" Height="300"
                              Background="{StaticResource MaterialDesignBody}">
