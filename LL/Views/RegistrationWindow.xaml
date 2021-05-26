@@ -133,7 +133,7 @@
         <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,246,0,0" VerticalAlignment="Top" Text="Телефон" />
         <TextBox Text="{Binding Surname}" x:Name="Surname" Grid.Row="2" Grid.Column="1" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
         <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" Text="Фалмилия" />
-        <TextBox Text="{Binding Name}" x:Name="Name" Grid.Row="2" Grid.Column="1" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBox Text="{Binding Name}" x:Name="Name_TextBox" Grid.Row="2" Grid.Column="1" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
         <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Имя" />
         <TextBox Text="{Binding MiddleName}" x:Name="MiddleName" Grid.Column="1" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
         <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" Text="Отчество" />

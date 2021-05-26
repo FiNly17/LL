@@ -18,7 +18,7 @@ using Microsoft.Win32;
 
 namespace LL.ViewModels
 {
-	public class ProductEditorViewModel : ViewModel
+	public class ProductEditorViewModel : ViewModel, IDataErrorInfo
 	{
 		public static Product InitialProduct { get; set; }
 
@@ -26,9 +26,9 @@ namespace LL.ViewModels
 
 		public string State { get => IsEditing ? "Редактирование товара" : "Добавление товара"; }
 
-		public List<ProductTypes> ProductTypes => Enum.GetValues(typeof(ProductTypes)).Cast<ProductTypes>().ToList();
+		public List<ProductTypes> ProductTypesList => Enum.GetValues(typeof(ProductTypes)).Cast<ProductTypes>().ToList();
 
-		public List<ClothingSizes> ClothingSizes => Enum.GetValues(typeof(ClothingSizes)).Cast<ClothingSizes>().ToList();
+		public List<ClothingSizes> ClothingSizesList => Enum.GetValues(typeof(ClothingSizes)).Cast<ClothingSizes>().ToList();
 
 		public int Id { get; }
 
@@ -48,12 +48,12 @@ namespace LL.ViewModels
 			set { SetProperty(ref _brand, value); }
 		}
 
-		private ProductTypes _productType;
+		private ProductTypes _type = ProductTypes.None;
 
-		public ProductTypes ProductType
+		public ProductTypes Type
 		{
-			get { return _productType; }
-			set { SetProperty(ref _productType, value); }
+			get { return _type; }
+			set { SetProperty(ref _type, value); }
 		}
 
 		private string _price = string.Empty;
@@ -88,9 +88,9 @@ namespace LL.ViewModels
 			set { SetProperty(ref _clothingSize, value); }
 		}
 
-		public string Error { get; private set; }
+		public string Error => throw new NotImplementedException();
 
-		//public string this[string columnName] => Validate(columnName);
+		public string this[string columnName] => Validate(columnName);
 
 		public ICommand SaveCommand { get; set; }
 
@@ -111,10 +111,12 @@ namespace LL.ViewModels
 
 			if (InitialProduct != null)
 			{
+				IsEditing = true;
+
 				Id = InitialProduct.Id;
 				Model = InitialProduct.Model;
 				Brand = InitialProduct.Brand;
-				ProductType = InitialProduct.Type;
+				Type = InitialProduct.Type;
 				Price = InitialProduct.Price.ToString();
 				Image = InitialProduct.Image;
 
@@ -122,18 +124,19 @@ namespace LL.ViewModels
 			}
 			else
 			{
+				IsEditing = false;
 				Image = ImageProvider.GetDefault();
 			}
 		}
 
 		private void Save()
 		{
-			//string errors = CheckFields();
-			//if (!string.IsNullOrWhiteSpace(errors))
-			//{
-			//	MessageBox.Show(errors, "Ошибка ввода данных");
-			//	return;
-			//}
+			string errors = CheckFields();
+			if (!string.IsNullOrWhiteSpace(errors))
+			{
+				MessageBox.Show(errors, "Ошибка ввода данных");
+				return;
+			}
 
 			try
 			{
@@ -142,7 +145,7 @@ namespace LL.ViewModels
 					var product = DataContext.GetInstance().Products.Find(Id);
 					product.Model = Model;
 					product.Brand = Brand;
-					product.Type = ProductType;
+					product.Type = Type;
 					product.Price = Convert.ToDouble(Price);
 					product.Image = Image;
 
@@ -150,7 +153,7 @@ namespace LL.ViewModels
 				}
 				else
 				{
-					if (ProductType == Models.ProductTypes.Clothing)
+					if (Type == Models.ProductTypes.Clothing)
 						DataContext.GetInstance().Products.Add(new Clothing(
 							ClothingSize, Model, Brand,
 							Convert.ToDouble(Price), Image));
@@ -172,72 +175,82 @@ namespace LL.ViewModels
 			}
 		}
 
-		//private string CheckFields()
-		//{
-		//	string errors = string.Empty;
+		private string CheckFields()
+		{
+			string errors = string.Empty;
 
-		//	errors += Validate("Title") + "\n";
-		//	errors += Validate("Author") + "\n";
-		//	errors += Validate("Genre") + "\n";
-		//	errors += Validate("Amt") + "\n";
+			errors += Validate("Model") + "\n";
+			errors += Validate("Brand") + "\n";
+			errors += Validate("Genre") + "\n";
+			errors += Validate("Amt") + "\n";
 
-		//	return errors.Trim();
-		//}
+			return errors.Trim();
+		}
 
-		//private string Validate(string columnName)
-		//{
-		//	if (columnName == null)
-		//		return string.Empty;
+		private string Validate(string columnName)
+		{
+			if (columnName == null)
+				return string.Empty;
 
-		//	string error = string.Empty;
+			string error = string.Empty;
 
-		//	switch (columnName)
-		//	{
-		//		case "Title":
-		//			{
-		//				if (string.IsNullOrEmpty(Title))
-		//					return "Введите название книги";
+			switch (columnName)
+			{
+				case "Model":
+					{
+						if (string.IsNullOrEmpty(Model))
+							return "Введите название модели";
+					}
+					break;
 
-		//				var (isValid, forbiddenSymbols) = Validator.Validate(Title, Validator.BookTitleRegex);
+				case "Brand":
+					{
+						if (string.IsNullOrEmpty(Brand))
+							return "Введите название брэнда";
+					}
+					break;
 
-		//				if (!isValid)
-		//					error = $"Введены недопустимые символы: {Validator.JoinSymbols(forbiddenSymbols)}";
-		//			}
-		//			break;
+				case "Type":
+					{
+						if (Type == ProductTypes.None)
+							return "Укажите тип товара";
+					}
+					break;
 
-		//		case "Author":
-		//			{
-		//				if (string.IsNullOrEmpty(Author))
-		//					return "Введите автора";
+				case "Price":
+					{
+						if (string.IsNullOrEmpty(Price))
+							return "Введите центу товара";
 
-		//				var (isValid, forbiddenSymbols) = Validator.Validate(Author, Validator.BookAuthorRegex);
+						var value = Converter.StringToDouble(Price);
+						if (value == null)
+							return "Цена товара должна быть числом";
 
-		//				if (!isValid)
-		//					error = $"Введены недопустимые символы: {Validator.JoinSymbols(forbiddenSymbols)}";
-		//				break;
-		//			}
-		//		case "Genre":
-		//			{
-		//				if (string.IsNullOrEmpty(Genre))
-		//					return string.Empty;
+						if (value < 0)
+							return "Цена товара должна быть положительным числом";
+					}
+					break;
 
-		//				var (isValid, forbiddenSymbols) = Validator.Validate(Genre, Validator.BookGenreRegex);
+				case "ShoesSize":
+					{
+						if (ShoesSize == 0)
+							return "Введите размер обуви";
 
-		//				if (!isValid)
-		//					error = $"Введены недопустимые символы: {Validator.JoinSymbols(forbiddenSymbols)}";
-		//				break;
-		//			}
-		//		case "Amt":
-		//			if (!int.TryParse(Amt, out int value))
-		//				error = "Введите число";
-		//			else if (value < 0)
-		//				error = "Количество книг должно быть положительным числом";
-		//			break;
-		//	}
+						if (ShoesSize < 0)
+							return "Размер обуви должен быть положительным числом";
+					}
+					break;
 
-		//	Error = error;
-		//	return error;
-		//}
+				case "ClothingSize":
+					{
+						if (ClothingSize == ClothingSizes.None)
+							return "Укажите размер одежды";
+					}
+					break;
+			}
+
+			return string.Empty;
+		}
 
 		private void LoadImg()
 		{
@@ -248,7 +261,11 @@ namespace LL.ViewModels
 
 			if (dialog.ShowDialog() == true)
 			{
-				Image = ImageProvider.ImageToByte(dialog.FileName);
+				var (status, result) = ImageProvider.ImageToByte(dialog.FileName);
+				if (status)
+					Image = result;
+				else
+					MessageBox.Show("Не удалось загрузить изображение");
 			}
 		}
 	}

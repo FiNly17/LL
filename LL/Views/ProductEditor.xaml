@@ -15,25 +15,33 @@
     </Page.DataContext>
 
     <Grid>
-        <StackPanel>
-            <StackPanel.Resources>
-                <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
-                    <Setter Property="Foreground" Value="White" />
-                </Style>
-                <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
-                    <Setter Property="Foreground" Value="White" />
-                </Style>
-            </StackPanel.Resources>
-            <TextBox Text="{Binding Model}" materialDesign:HintAssist.Hint="Модель" />
-            <TextBox Text="{Binding Brand}" materialDesign:HintAssist.Hint="Брэнд" />
-            <TextBox Text="{Binding Price}" materialDesign:HintAssist.Hint="Цена" />
-            <ComboBox ItemsSource="{Binding ProductTypes}" SelectedItem="{Binding ProductType}" materialDesign:HintAssist.Hint="Тип продукта" />
-            <TextBox Text="{Binding ShoesSize}" materialDesign:HintAssist.Hint="Размер обуви" />
-            <ComboBox ItemsSource="{Binding ClothingSizes}" SelectedItem="{Binding ClothingSize}" materialDesign:HintAssist.Hint="Размер одежды" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card  Grid.Column="0" Margin="10">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
+                        <Setter Property="Foreground" Value="White" />
+                    </Style>
+                    <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <Setter Property="Foreground" Value="White" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBox Text="{Binding Model}" materialDesign:HintAssist.Hint="Модель" />
+                <TextBox Text="{Binding Brand}" materialDesign:HintAssist.Hint="Брэнд" />
+                <TextBox Text="{Binding Price}" materialDesign:HintAssist.Hint="Цена" />
+                <ComboBox ItemsSource="{Binding ProductTypes}" SelectedItem="{Binding ProductType}" materialDesign:HintAssist.Hint="Тип продукта" />
+                <TextBox Text="{Binding ShoesSize}" materialDesign:HintAssist.Hint="Размер обуви" />
+                <ComboBox ItemsSource="{Binding ClothingSizes}" SelectedItem="{Binding ClothingSize}" materialDesign:HintAssist.Hint="Размер одежды" />
 
-            <Button Content="Загрузить изображение" Command="{Binding LoadImgCommand}" />
-            <Button Content="Сохранить" Command="{Binding SaveCommand}" />
-            <Image Source="{Binding Image}" Stretch="Uniform" Height="400"/>
+                <Button Content="Сохранить" Command="{Binding SaveCommand}" />
+            </StackPanel>
+        </materialDesign:Card>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Image Source="{Binding Image}" Stretch="Uniform" />
+            <Button Command="{Binding LoadImgCommand}" Content="Загрузить изображение" Margin="10" />
         </StackPanel>
     </Grid>
 </Page>

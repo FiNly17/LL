@@ -47,6 +47,6 @@
             </Button>
         </StackPanel>
 
-        <Frame x:Name="Main" />
+        <Frame x:Name="Main" NavigationUIVisibility="Hidden" />
     </DockPanel>
 </Window>

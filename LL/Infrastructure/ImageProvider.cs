@@ -2,6 +2,7 @@
 using System.Drawing;
 
 using LL.Properties;
+using LL.Services;
 
 namespace LL.Infrastructure
 {
@@ -11,16 +12,16 @@ namespace LL.Infrastructure
 
 		public static byte[] GetDefault() => (byte[])converter.ConvertTo(Resources.DefaultCover, typeof(byte[]));
 
-		public static byte[] ImageToByte(string img)
+		public static (bool status, byte[] result) ImageToByte(string img)
 		{
 			try
 			{
-				return (byte[])converter.ConvertTo(new Bitmap(img), typeof(byte[]));
+				return (true, (byte[])converter.ConvertTo(new Bitmap(img), typeof(byte[])));
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
-				return GetDefault();
+				Logger.Log(ex.Message);
+				return (false, GetDefault());
 			}
 		}
 	}

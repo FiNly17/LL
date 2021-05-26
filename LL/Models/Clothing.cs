@@ -17,6 +17,7 @@
 
 	public enum ClothingSizes
 	{
-		XS, S, M, L, XL, XXL
+		XS, S, M, L, XL, XXL,
+		None
 	}
 }
