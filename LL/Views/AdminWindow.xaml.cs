@@ -46,6 +46,12 @@ namespace LL.Views
 					content = new ProductEditorPage();
 					break;
 
+				case AdminPages.Orders:
+					break;
+
+				case AdminPages.OrdersHistory:
+					break;
+
 				default:
 					content = new ProductsTablePage();
 					page = AdminPages.Admins;
@@ -63,5 +69,13 @@ namespace LL.Views
 		private void Users_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(AdminPages.Users);
 
 		private void Admins_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(AdminPages.Admins);
+
+		private void Orders_Button_Click(object sender, RoutedEventArgs e)
+		{
+		}
+
+		private void OrdersHistory_Button_Click(object sender, RoutedEventArgs e)
+		{
+		}
 	}
 }

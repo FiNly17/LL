@@ -71,6 +71,7 @@
                     </Style>
                 </Image.Style>
             </Image>
+            <materialDesign:PackIcon Kind="CLose" Margin="10,30,40,30" />
             <Image x:Name="Image" Margin="10,30,40,30" Source="/Images/close" RenderOptions.BitmapScalingMode="HighQuality" MouseDown="Image_MouseDown">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">

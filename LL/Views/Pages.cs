@@ -12,6 +12,8 @@
 		Products,
 		Users,
 		Editor,
-		Admins
+		Admins,
+		Orders,
+		OrdersHistory
 	}
 }

@@ -55,7 +55,7 @@ namespace LL.Models
 			MiddleName = middleName;
 		}
 
-		public virtual string ForSearch() => $"{Id} {Login} {EMail} {Phone} {FullName}";
+		public virtual string ForSearch() => $"{Id} {Login} {EMail} {Phone} {FullName}".ToLower();
 	}
 
 	public enum AccountType

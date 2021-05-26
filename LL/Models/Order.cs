@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
+using LL.Infrastructure;
+
 namespace LL.Models
 {
 	public class Order
@@ -19,6 +21,8 @@ namespace LL.Models
 
 		public DateTime Date { get; set; }
 
+		public OrderStatuses Status { get; set; }
+
 		[NotMapped]
 		public double Price => Products.Sum(item => item.Price);
 
@@ -32,5 +36,17 @@ namespace LL.Models
 			Products = products;
 			Date = date;
 		}
+
+		public string ForSearch() => $"{Id} {User.FullName} {ProductsStr} {Date:G} {Status.Rus()} {Price}".ToLower();
+
+		public string ProductsStr => string.Join(" ", Products.Select(product => product.FullName)).Trim();
+	}
+
+	public enum OrderStatuses
+	{
+		AwaitingConfirmation,
+		DeliveryInProgress,
+		Delivered,
+		Declined
 	}
 }

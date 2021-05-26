@@ -26,6 +26,6 @@ namespace LL.Models
 			Address = address;
 		}
 
-		public override string ForSearch() => $"{base.ForSearch()} {Address}";
+		public override string ForSearch() => $"{base.ForSearch()} {Address}".ToLower();
 	}
 }

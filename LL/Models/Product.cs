@@ -32,12 +32,9 @@ namespace LL.Models
 		public string FullName => $"{Brand} {Model}";
 
 		[NotMapped]
-		public bool IsFavorite => (UserManager.CurrentUser as User).Bookmarks.Any(item => item ==this);
+		public bool IsFavorite => (UserManager.CurrentUser as User).Bookmarks.Any(item => item == this);
 
-		public Product()
-		{
-			Id = -1;
-		}
+		public Product() => Id = -1;
 
 		protected Product(string model, string brand, double price, byte[] image, ProductTypes type)
 		{
@@ -50,7 +47,7 @@ namespace LL.Models
 			Image = image;
 		}
 
-		public string ForSearch() => $"{Id} {Model} {Brand} {Type.Rus()} {Price}";
+		public virtual string ForSearch() => $"{Id} {Model} {Brand} {Type.Rus()} {Price}".ToLower();
 	}
 
 	public enum ProductTypes

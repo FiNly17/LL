@@ -131,6 +131,36 @@ namespace LL.Services
 				return GetInstance().Products.ToList();
 		}
 
+		public static List<Order> SearchOrders(string query, bool deliveredOnly)
+		{
+			query = query?.ToLower();
+
+			if (deliveredOnly)
+			{
+				if (!string.IsNullOrEmpty(query))
+				{
+					var tags = query.Split(' ');
+
+					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin &&
+							tags.All(tag => account.ForSearch().ToLower().Contains(tag))).Cast<Admin>().ToList();
+				}
+				else
+					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin).Cast<Admin>().ToList();
+			}
+			else
+			{
+				if (!string.IsNullOrEmpty(query))
+				{
+					var tags = query.Split(' ');
+
+					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin &&
+							tags.All(tag => account.ForSearch().ToLower().Contains(tag))).Cast<Admin>().ToList();
+				}
+				else
+					return GetInstance().Orders.ToList().Where(account => account.AccountType == AccountType.Admin).Cast<Admin>().ToList();
+			}
+		}
+
 		#endregion Methods
 	}
 }

@@ -13,6 +13,8 @@
 		{
 			Size = size;
 		}
+
+		public override string ForSearch() => $"{base.ForSearch()} {Size}";
 	}
 
 	public enum ClothingSizes
