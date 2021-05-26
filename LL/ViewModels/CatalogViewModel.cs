@@ -32,7 +32,11 @@ namespace LL.ViewModels
 		public bool IsShoes
 		{
 			get { return _isShoes; }
-			set { SetProperty(ref _isShoes, value); }
+			set
+			{
+				SetProperty(ref _isShoes, value);
+				Search();
+			}
 		}
 
 		private int _sortIndex = 2;
@@ -57,7 +61,9 @@ namespace LL.ViewModels
 
 		public void Search()
 		{
-			var temp = DataContext.SearchProducts(Query, IsShoes ? ProductTypes.Shoes : ProductTypes.Clothing);
+			var temp = DataContext.SearchProducts(Query, IsShoes ? ProductTypes.Shoes : ProductTypes.Clothing)
+				.Where(item => item.Type == (IsShoes ? ProductTypes.Shoes : ProductTypes.Clothing));
+
 			switch (SortIndex)
 			{
 				case 0:
@@ -75,7 +81,7 @@ namespace LL.ViewModels
 					break;
 
 				default:
-					SearchResult = temp;
+					SearchResult = temp.ToList();
 					break;
 			}
 		}

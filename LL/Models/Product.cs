@@ -37,7 +37,7 @@ namespace LL.Models
 		public string TypeStr => Type.Rus();
 
 		[NotMapped]
-		public string Sizestr => Type == ProductTypes.Clothing ? (this as Clothing).Size.ToString() : (this as Shoes).Size.ToString();
+		public string SizeStr => Type == ProductTypes.Clothing ? (this as Clothing).Size.ToString() : (this as Shoes).Size.ToString();
 
 		[NotMapped]
 		public bool IsFavorite => (UserManager.CurrentUser as User).Bookmarks.Any(item => item == this);
@@ -55,7 +55,7 @@ namespace LL.Models
 			Image = image;
 		}
 
-		public virtual string ForSearch() => $"{Id} {Model} {Brand} {Type.Rus()} {Price}".ToLower();
+		public virtual string ForSearch() => $"{Id} {Model} {Brand} {Type.Rus()} {Price} {SizeStr}".ToLower();
 	}
 
 	public enum ProductTypes

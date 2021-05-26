@@ -27,7 +27,7 @@ namespace LL.ViewModels
 		{
 			Product = InitialProduct;
 			InitialProduct = null;
-			Reviews = DataContext.GetInstance().Reviews.Where(item => item.Product == Product).ToList();
+			Reviews = DataContext.GetInstance().Reviews.ToList().Where(item => item.Product == Product).ToList();
 		}
 	}
 }
