@@ -56,18 +56,21 @@
             <TextBox Style="{StaticResource TextTB}" Text="Premium" />
         </StackPanel>
         <ScrollViewer DockPanel.Dock="Bottom">
-            <WrapPanel x:Name="Catalogs" HorizontalAlignment="Center">
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-                <local:ProductCard Height="400" Width="300" />
-            </WrapPanel>
+            <ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <local:Product Height="400" Width="300" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True">
+
+
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
         </ScrollViewer>
     </DockPanel>
 </Page>

@@ -17,15 +17,6 @@ namespace LL.Views
 
 		public void CreatePr(object sender, RoutedEventArgs e)
 		{
-			ProductCard blck = new ProductCard();
-			var uriSource = new Uri("C:\\Studing\\Курсовой проект\\LL\\LL\\Images\\heart2.png");
-			blck.PhotoPr.Source = new BitmapImage(uriSource);
-			blck.Price.Text = "22,00";
-			blck.Company.Text = "Adidas";
-			blck.Size.Text = "39";
-			blck.Height = 400;
-			blck.Width = 300;
-			Catalogs.Children.Add(blck);
 		}
 	}
 }
