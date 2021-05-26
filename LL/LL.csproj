@@ -93,6 +93,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\Commands\AddToBasketCommand.cs" />
     <Compile Include="Infrastructure\Commands\Command.cs" />
     <Compile Include="Infrastructure\Commands\DeleteAdminCommand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteProductCommand.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="ViewModels\AdminRegistrationViewModel.cs" />
     <Compile Include="ViewModels\AdminsTableViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\BasketViewModel.cs" />
     <Compile Include="ViewModels\CatalogViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\OrdersTableViewModel.cs" />

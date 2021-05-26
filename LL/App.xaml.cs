@@ -27,10 +27,8 @@ namespace LL
 			CultureInfo.DefaultThreadCurrentCulture = vCulture;
 			CultureInfo.DefaultThreadCurrentUICulture = vCulture;
 
-			FrameworkElement.LanguageProperty.OverrideMetadata(
-			typeof(FrameworkElement),
-			new FrameworkPropertyMetadata(
-		 XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+			FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement),
+				new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
 		}
 
 		private void Application_Startup(object sender, StartupEventArgs e)

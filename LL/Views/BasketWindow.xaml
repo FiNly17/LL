@@ -5,28 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:LL.Views"
-        xmlns:vm="clr-namespace:LL.Services"
+        xmlns:vm="clr-namespace:LL.ViewModels"
         mc:Ignorable="d"
         Title="BasketWindow" Height="600" Width="800" WindowStyle="None" Background="Gray" BorderBrush="White" BorderThickness="2">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="25 0" FontSize="20" Foreground="White" FontWeight="Heavy" Text="Корзина"/>
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+
+    <Window.DataContext>
+        <vm:BasketViewModel />
+    </Window.DataContext>
+
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top">
+        <TextBlock DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="25 0" FontSize="20" Foreground="White" FontWeight="Heavy" Text="Корзина" />
+        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
             <Button materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Height="30" Padding="0 0"
                         x:Name="MinimizeWindow_Button" Click="MinimizeWindow_Button_Click">
                 <materialDesign:PackIcon Kind="WindowMinimize"
                                              Margin="0 0"
                                              Width="30"
-                                             Height="30"/>
+                                             Height="30" />
                 <Button.Resources>
                     <Style TargetType="materialDesign:PackIcon">
-                        <Setter Property="Foreground" Value="DimGray"/>
+                        <Setter Property="Foreground" Value="DimGray" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Foreground" Value="White" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -37,21 +39,42 @@
                 <materialDesign:PackIcon Kind="WindowClose"
                                              Margin="0, 0,5,0"
                                              Width="30"
-                                             Height="30"/>
+                                             Height="30" />
                 <Button.Resources>
                     <Style TargetType="materialDesign:PackIcon">
-                        <Setter Property="Foreground" Value="DimGray"/>
+                        <Setter Property="Foreground" Value="DimGray" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Foreground" Value="White" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Resources>
             </Button>
         </StackPanel>
-        <WrapPanel Grid.Row="1" x:Name="WrapMenu" Margin="25">
-            
-        </WrapPanel>
-    </Grid>
+        </DockPanel>
+        <ListBox ItemsSource="{Binding Products}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <materialDesign:Card>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Source="{Binding Image}" Width="200" Height="200"/>
+                            <TextBlock Grid.Row="1" Text="{Binding FullName}"/>
+                            <TextBlock Grid.Row="2" Text="{Binding Price}"/>
+                        </Grid>
+                    </materialDesign:Card>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
 </Window>

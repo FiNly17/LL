@@ -6,12 +6,17 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:LL.Views"
       xmlns:vm="clr-namespace:LL.ViewModels"
+        xmlns:cmd="clr-namespace:LL.Infrastructure.Commands"
         mc:Ignorable="d"
         Title="ProductInfo" Height="600" Width="600" Background="Gray" WindowStyle="None" BorderThickness="0">
 
     <Window.DataContext>
         <vm:ProductInfoViewModel />
     </Window.DataContext>
+
+    <Window.Resources>
+        <cmd:AddToBasketCommand x:Key="AddToBasketCommand" />
+    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,7 +30,7 @@
             <RowDefinition />
             <RowDefinition Height="280" />
         </Grid.RowDefinitions>
-        <Image Grid.Column="0" Grid.RowSpan="4" Grid.Row="0" Source="{Binding Product.Image}" />
+        <Image Grid.Column="0" Grid.RowSpan="4" Grid.Row="0" Source="{Binding Product.Image, Mode=OneWay}" />
         <StackPanel Grid.Column="1" Grid.RowSpan="4" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Брэнд:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,50,0,0" />
@@ -46,15 +51,15 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Размер:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,10,0,0" />
-                <TextBlock Text="{Binding Product.Sizestr}" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
+                <TextBlock Text="{Binding Product.SizeStr}" FontSize="23" FontWeight="Light" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" />
             </StackPanel>
             <Grid Margin="15"
                  Width="150">
                 <Button Background="Gray" Foreground="Black"
-                Style="{StaticResource MaterialDesignRaisedButton}"
-                Height="30"
-                materialDesign:ButtonAssist.CornerRadius="10"
-                ToolTip="MaterialDesignRaisedButton with Round Corners">
+                        Command="{StaticResource AddToBasketCommand}" CommandParameter="{Binding Product}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Height="30" materialDesign:ButtonAssist.CornerRadius="10"
+                        ToolTip="MaterialDesignRaisedButton with Round Corners">
                     <TextBlock Text="Добавить" />
                 </Button>
             </Grid>
@@ -62,11 +67,11 @@
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
             <StackPanel x:Name="NewReview_StackPanel">
                 <StackPanel Orientation="Horizontal" Margin="25 0">
-                <TextBlock FontSize="20" FontWeight="Medium" Foreground="White" Text="{Binding UserName}"/>
-                <materialDesign:RatingBar Margin="25,3,0,0"
+                    <TextBlock FontSize="20" FontWeight="Medium" Foreground="White" Text="{Binding UserName}" />
+                    <materialDesign:RatingBar Margin="25,3,0,0"
                              Foreground="GreenYellow"
                              x:Name="NewReviewRating"
-                             Value="0"  />
+                             Value="0" />
                 </StackPanel>
                 <TextBox Margin="25 5" BorderThickness="2" BorderBrush="White" Height="50" />
                 <Button Background="Gray" Foreground="Black"
@@ -98,7 +103,6 @@
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                        
                     </ListBox>
                 </ScrollViewer>
             </StackPanel>
