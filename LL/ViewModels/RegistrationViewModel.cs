@@ -182,7 +182,7 @@ namespace LL.ViewModels
 						if (string.IsNullOrEmpty(EMail))
 							return "Введите почту";
 
-						var (isValid, forbiddenSymbols) = Validator.Validate(EMail, Validator.eMailRegex);
+						var (isValid, _) = Validator.Validate(EMail, Validator.eMailRegex);
 
 						if (!isValid)
 							return "Введённая строка не является электронной почтой";
@@ -194,7 +194,7 @@ namespace LL.ViewModels
 						if (string.IsNullOrEmpty(Phone))
 							return "Введите телефон";
 
-						var (isValid, forbiddenSymbols) = Validator.Validate(Phone, Validator.phoneRegex);
+						var (isValid, _) = Validator.Validate(Phone, Validator.phoneRegex);
 
 						if (!isValid)
 							return "Введённая строка не является телефоном";

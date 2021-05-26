@@ -1,4 +1,7 @@
-﻿namespace LL.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace LL.Models
 {
 	public class Clothing : Product
 	{
@@ -15,6 +18,20 @@
 		}
 
 		public override string ForSearch() => $"{base.ForSearch()} {Size}";
+
+		public static List<Clothing> Sort(List<Clothing> list)
+		{
+			var values = Enum.GetValues(typeof(ClothingSizes));
+			List<Clothing> result = new List<Clothing>();
+
+			for (int i = 0; i < values.Length - 1; i++)
+			{
+				var pop = list.FindAll(item => ((int)item.Size) == i);
+				result.AddRange(pop);
+			}
+
+			return result;
+		}
 	}
 
 	public enum ClothingSizes

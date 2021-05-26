@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:LL.Views"
+      xmlns:local="clr-namespace:LL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1520"
       Title="MainPage">
@@ -33,7 +33,6 @@
     </Page.Resources>
     <ScrollViewer>
         <StackPanel>
-            <Image Width="900" RenderOptions.BitmapScalingMode="HighQuality" Source="C:\Studing\Курсовой проект\LL\LL\Images\ll.png" />
             <MediaElement Height="300" VerticalAlignment="Top" x:Name="SCARLXRD" LoadedBehavior="Play" RenderOptions.BitmapScalingMode="HighQuality" Source="Images\scarlxrd - EVIL EGX.mp4" Stretch="UniformToFill" UnloadedBehavior="Play" />
             <TextBox Margin="0,-400,0,0" Width="350" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="70" FontWeight="Medium"  HorizontalAlignment="Center"  Text="SCARLXRD" Height="90" />
             <Button Style="{StaticResource buttonAuthor}" Margin="0,-200,0,0" Content="Перейти" x:Name="GoesSL" />
@@ -44,9 +43,15 @@
             <TextBox Margin="0,-400,0,0" Width="420" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="70" FontWeight="Medium" HorizontalAlignment="Center"  Text="$uicide Boy$" Height="90" />
             <Button Style="{StaticResource buttonAuthor}" Margin="0,-200,0,0" Content="Перейти" x:Name="GoesSS" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="C:\Studing\Курсовой проект\LL\LL\Images\inst.png" RenderOptions.BitmapScalingMode="HighQuality"  Height="30" />
-                <Image Source="C:\Studing\Курсовой проект\LL\LL\Images\fb.png" Margin="5,0,0,0" RenderOptions.BitmapScalingMode="HighQuality"  Height="30" />
-                <Image Source="C:\Studing\Курсовой проект\LL\LL\Images\vk.png" RenderOptions.BitmapScalingMode="HighQuality"  Height="40" />
+                <StackPanel.Resources>
+                    <Style TargetType="materialDesign:PackIcon">
+                        <Setter Property="Width" Value="30" />
+                        <Setter Property="Height" Value="30" />
+                    </Style>
+                </StackPanel.Resources>
+                <materialDesign:PackIcon Kind="Instagram" />
+                <materialDesign:PackIcon Kind="Facebook" />
+                <materialDesign:PackIcon Kind="Vkontakte" />
             </StackPanel>
             <TextBox HorizontalAlignment="Center" FontSize="19" Margin="0,40,0,0" Foreground="FloralWhite" Opacity="0.7">Copyright © 2021. Scarlxrd LTD. All Rights Reserved</TextBox>
         </StackPanel>
