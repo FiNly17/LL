@@ -4,11 +4,52 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LL.Views"
+      xmlns:vm="clr-namespace:LL.ViewModels"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductsTablePage">
 
-    <Grid>
-        
-    </Grid>
+    <Page.DataContext>
+        <vm:ProductsTableViewModel />
+    </Page.DataContext>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Button Style="{StaticResource MaterialDesignRaisedButton}" Command="{Binding SearchCommand}"
+                        DockPanel.Dock="Right" Width="100">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" />
+                        <TextBlock Text="Поиск" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <TextBox Text="{Binding Query, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" VerticalAlignment="Center"
+                         x:Name="Query_TextBox" Margin="10 0" DockPanel.Dock="Right"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Padding="10 5" HorizontalAlignment="Stretch" materialDesign:HintAssist.Foreground="Black"
+                         materialDesign:HintAssist.Hint="Введите запрос" materialDesign:TextFieldAssist.UnderlineBrush="Black">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return" Command="{Binding SearchCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+            </DockPanel>
+        </Grid>
+        <DataGrid ItemsSource="{Binding SearchResult, Mode=OneWay}" IsReadOnly="True" AutoGenerateColumns="False"
+                  VirtualizingPanel.ScrollUnit="Pixel" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="50" />
+                <DataGridTextColumn Binding="{Binding Model}" Header="Модель" Width="250" />
+                <DataGridTextColumn Binding="{Binding Brand}" Header="Брэнд" Width="250" />
+                <DataGridTextColumn Binding="{Binding Price, StringFormat=\{0:c\}}" Header="Цена" Width="100" />
+                <DataGridTextColumn Binding="{Binding Type}" Header="Тип" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </Page>

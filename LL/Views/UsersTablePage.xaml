@@ -33,8 +33,8 @@
                 <TextBox Text="{Binding Query, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" VerticalAlignment="Center"
                          x:Name="Query_TextBox" Margin="10 0" DockPanel.Dock="Right"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         Padding="10 5" HorizontalAlignment="Stretch"
-                         materialDesign:HintAssist.Hint="Введите запрос">
+                         Padding="10 5" HorizontalAlignment="Stretch" materialDesign:HintAssist.Foreground="Black"
+                         materialDesign:HintAssist.Hint="Введите запрос" materialDesign:TextFieldAssist.UnderlineBrush="Black">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return" Command="{Binding SearchCommand}" />
                     </TextBox.InputBindings>
@@ -42,28 +42,33 @@
             </DockPanel>
         </Grid>
         <DataGrid ItemsSource="{Binding SearchResult, Mode=OneWay}" IsReadOnly="True" AutoGenerateColumns="False"
-                  VirtualizingPanel.ScrollUnit="Pixel">
+                  VirtualizingPanel.ScrollUnit="Pixel" Margin="10">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="*" />
-                <DataGridTextColumn Binding="{Binding FullName}" Header="ФИО" Width="*" />
-                <DataGridTextColumn Binding="{Binding EMail}" Header="Почта" Width="*" />
-                <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="*" />
-                <DataGridTextColumn Binding="{Binding CarsStr}" Header="Номер машины" Width="*" />
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="50" />
+                <DataGridTextColumn Binding="{Binding FullName}" Header="ФИО" Width="200" />
+                <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="150" />
+                <DataGridTextColumn Binding="{Binding EMail}" Header="Почта" Width="200" />
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Номер телефона" Width="150" />
+                <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="*" />
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <materialDesign:Card Margin="10">
-                        <DataGrid ItemsSource="{Binding Bookings}" IsReadOnly="True" AutoGenerateColumns="False"
-                              VirtualizingPanel.ScrollUnit="Pixel">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="100" />
-                                <DataGridTextColumn Binding="{Binding Place.Id}" Header="Место" Width="100" />
-                                <DataGridTextColumn Binding="{Binding StartTime, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Время брони" Width="150" />
-                                <DataGridTextColumn Binding="{Binding EndTime, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Конец брони" Width="150" />
-                                <DataGridTextColumn Binding="{Binding Price, StringFormat=\{0:c\}}" Header="Оплата" Width="100" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </materialDesign:Card>
+                    <DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" />
+                            <DataGridTextColumn Binding="{Binding Price, StringFormat=\{0:c\}}" />
+                            <DataGridTextColumn Binding="{Binding Products.Count}" />
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False" IsReadOnly="True">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{Binding }" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>

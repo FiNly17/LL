@@ -97,7 +97,7 @@ namespace LL.Services
 			{
 				var tags = query.Split(' ');
 
-				return GetInstance().Accounts.Where(account => account.AccountType == AccountType.Admin &&
+				return GetInstance().Accounts.ToList().Where(account => account.AccountType == AccountType.Admin &&
 						tags.All(tag => account.ForSearch().ToLower().Contains(tag))).Cast<Admin>().ToList();
 			}
 			else
@@ -115,15 +115,15 @@ namespace LL.Services
 				switch (type)
 				{
 					case ProductTypes.Clothing:
-						return GetInstance().Products.Where(product => product.Type == ProductTypes.Clothing &&
+						return GetInstance().Products.ToList().Where(product => product.Type == ProductTypes.Clothing &&
 					tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
 
 					case ProductTypes.Shoes:
-						return GetInstance().Products.Where(product => product.Type == ProductTypes.Shoes &&
+						return GetInstance().Products.ToList().Where(product => product.Type == ProductTypes.Shoes &&
 					tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
 
 					default:
-						return GetInstance().Products.Where(product =>
+						return GetInstance().Products.ToList().Where(product =>
 						   tags.All(tag => product.ForSearch().ToLower().Contains(tag))).ToList();
 				}
 			}

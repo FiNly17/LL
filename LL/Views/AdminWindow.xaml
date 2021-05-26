@@ -14,7 +14,7 @@
     </Window.DataContext>
 
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left" Background="Gray" Width="250" HorizontalAlignment="Left">
+        <StackPanel DockPanel.Dock="Left" Background="Black" Width="250" HorizontalAlignment="Left">
             <StackPanel.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource ButtonWithIcon}">
                     <Setter Property="Height" Value="50" />
@@ -47,6 +47,6 @@
             </Button>
         </StackPanel>
 
-        <Frame x:Name="Main" NavigationUIVisibility="Hidden" />
+        <Frame x:Name="Main" NavigationUIVisibility="Hidden" Background="Gray"/>
     </DockPanel>
 </Window>
