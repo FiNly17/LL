@@ -23,36 +23,68 @@
             </Style>
         </Style.Resources>
     </Style>
-    <DataTemplate x:Key="Field" DataType="ModulsProduct">
+    
+    <DataTemplate x:Key="Field" DataType="{x:Type models:Shoes}">
         <DataTemplate.Resources>
             <cmd:OpenProductCommand x:Key="OpenProductCommand" />
         </DataTemplate.Resources>
-        <materialDesign:Card Width="158" Height="260"
+        <Border BorderBrush="White" BorderThickness="2">
+            <materialDesign:Card Width="250" Height="300"
                              Background="{StaticResource MaterialDesignBody}">
-            <materialDesign:Card.InputBindings>
-                <MouseBinding MouseAction="LeftClick"
+                <materialDesign:Card.InputBindings>
+                    <MouseBinding MouseAction="LeftClick"
                               CommandParameter="{Binding}"
-                              Command="{StaticResource OpenThumbnailCommand}">
-                </MouseBinding>
-            </materialDesign:Card.InputBindings>
+                              Command="{StaticResource OpenProductCommand}">
+                    </MouseBinding>
+                </materialDesign:Card.InputBindings>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="8*" />
-                    <RowDefinition Height="2*" />
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*" />
+                        <RowDefinition Height="3*" />
+                    </Grid.RowDefinitions>
 
-                <Image Source="{Binding Image}" Stretch="Fill"
+                    <Image Source="{Binding Image}" Stretch="Fill"
                        Grid.Row="0" Margin="-1" />
-                <materialDesign:ColorZone Mode="PrimaryDark" Grid.Row="1" VerticalAlignment="Stretch">
-                    <TextBlock Text="{Binding Title}"
+                    <materialDesign:ColorZone Mode="Dark" Grid.Row="1" VerticalAlignment="Stretch">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Price, StringFormat=\{0:c\}}"
                                VerticalAlignment="Center"
-                               FontSize="14"
-                               TextAlignment="Center"
+                               FontSize="16"
+                               FontWeight="DemiBold"
+                               TextAlignment="Left"
+                               Foreground="Red"
                                TextWrapping="Wrap"
                                Padding="5" />
-                </materialDesign:ColorZone>
-            </Grid>
-        </materialDesign:Card>
+                            <TextBlock Text="{Binding FullName}"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Normal"
+                               TextAlignment="Left"
+                               TextWrapping="Wrap"
+                               Padding="5" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Size: "
+                               
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Normal"
+                               TextAlignment="Left"
+                               TextWrapping="Wrap"
+                               Padding="5" />
+                                <TextBlock Text="{Binding Size}"
+                               
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               FontWeight="Normal"
+                               TextAlignment="Left"
+                               TextWrapping="Wrap"
+                               Padding="0,5,5,5 " />
+                            </StackPanel>
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+                </Grid>
+            </materialDesign:Card>
+        </Border>
     </DataTemplate>
 </ResourceDictionary>

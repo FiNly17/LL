@@ -3,11 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:LL.Views"
+      xmlns:local="clr-namespace:LL.Views" xmlns:vm="clr-namespace:LL.ViewModels"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1520"
       Title="MainPage">
 
+    <Page.DataContext>
+        <vm:CatalogViewModel/>
+    </Page.DataContext>
     <Page.Resources>
         <Style x:Key="buttonAuthor" TargetType="Button">
             <Setter Property="FontSize" Value="24" />
@@ -56,15 +59,10 @@
             <TextBox Style="{StaticResource TextTB}" Text="Premium" />
         </StackPanel>
         <ScrollViewer DockPanel.Dock="Bottom">
-            <ListBox>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <local:Product Height="400" Width="300" />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+            <ListBox ItemsSource="{Binding Products}" Background="Pink" ItemTemplate="{StaticResource Field}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel IsItemsHost="True">
+                        <WrapPanel IsItemsHost="True" HorizontalAlignment="Center" Background="Green">
                         </WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
