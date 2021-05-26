@@ -20,6 +20,7 @@ namespace LL.Services
 			try
 			{
 				address = ConfigurationManager.AppSettings["SMTPAddress"];
+				password = new SecureString();
 				foreach (var ch in ConfigurationManager.AppSettings["SMTPPassword"].ToCharArray())
 					password.AppendChar(ch);
 				password.MakeReadOnly();
