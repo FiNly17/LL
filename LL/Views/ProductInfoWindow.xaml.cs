@@ -18,5 +18,8 @@ namespace LL.Views
 				NewReview_StackPanel.Visibility = Visibility.Collapsed;
 		}
 
-    }
+		private void MinimizeWindow_Button_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
+
+		private void Close_Button_Click(object sender, RoutedEventArgs e) => Close();
+	}
 }

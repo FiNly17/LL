@@ -47,7 +47,8 @@
                                 x:Name="Catalog_Button" Click="Catalog_Button_Click" />
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" Margin="50,34,0,10"
-                             Content="Избранное" Height="Auto" FontWeight="Regular" />
+                             Content="Избранное" Height="Auto" FontWeight="Regular" 
+                               x:Name="Bookmarks_Button" Click="BookmarksPage_Button_Click"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">

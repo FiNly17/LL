@@ -39,10 +39,10 @@ namespace LL.Views
 				case Pages.CatalogPage:
 					content = new CatalogPage();
 					break;
-				//case Pages.UsersInfo:
-				//	content = new UsersInfoPage();
-				//	break;
-				default:
+                case Pages.OrderPage:
+                    content = new BookmarksPage();
+                    break;
+                default:
 					MessageBox.Show("Страница не найдена");
 					content = new HomePage();
 					break;
@@ -62,6 +62,8 @@ namespace LL.Views
 		private void Close_Button_Click(object sender, RoutedEventArgs e) => Close();
 
 		private void MainPage_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.MainPage);
+
+		private void BookmarksPage_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.OrderPage);
 
 		private void Catalog_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.CatalogPage);
 

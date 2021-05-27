@@ -31,6 +31,25 @@
             <RowDefinition Height="280" />
         </Grid.RowDefinitions>
         <Image Grid.Column="0" Grid.RowSpan="4" Grid.Row="0" Source="{Binding Product.Image, Mode=OneWay}" />
+        <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="30" Padding="0"
+                        x:Name="Close_Button" Click="Close_Button_Click">
+                <materialDesign:PackIcon Kind="WindowClose"
+                                             Margin="0, 0,5,0"
+                                             Width="30"
+                                             Height="30" />
+                <Button.Resources>
+                    <Style TargetType="materialDesign:PackIcon">
+                        <Setter Property="Foreground" Value="DimGray" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
         <StackPanel Grid.Column="1" Grid.RowSpan="4" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Брэнд:" FontSize="23" FontWeight="Heavy" Foreground="White" HorizontalAlignment="Left" Margin="25,50,0,0" />
