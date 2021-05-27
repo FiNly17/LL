@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 using LL.Models;
 using LL.Services;
@@ -16,7 +17,10 @@ namespace LL.Infrastructure.Commands
 		public override void Execute(object parameter)
 		{
 			if (parameter is Product product)
+			{
 				BasketManager.Add(product);
+				MessageBox.Show("Товар добавлен в корзину");
+			}
 			else
 				throw new InvalidOperationException();
 		}

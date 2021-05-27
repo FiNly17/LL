@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:LL.Views"
       xmlns:vm="clr-namespace:LL.ViewModels"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:cmd="clr-namespace:LL.Infrastructure.Commands"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrdersTablePage">
@@ -13,6 +14,12 @@
     <Page.DataContext>
         <vm:OrdersTableViewModel />
     </Page.DataContext>
+
+    <Page.Resources>
+        <cmd:DeliveringStatusCommand x:Key="DeliveringStatusCommand" />
+        <cmd:DeliveredStatusCommand x:Key="DeliveredStatusCommand" />
+        <cmd:DeclinedStatusCommand x:Key="DeclinedStatusCommand" />
+    </Page.Resources>
 
     <DockPanel>
         <Grid DockPanel.Dock="Top" Height="60">
@@ -46,18 +53,28 @@
                   VirtualizingPanel.ScrollUnit="Pixel" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="50" />
-                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Время заказа" Width="150" />
+                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Время заказа" Width="140" />
                 <DataGridTextColumn Binding="{Binding User.FullName}" Header="Заказчик" Width="200" />
                 <DataGridTextColumn Binding="{Binding User.Phone}" Header="Номер телефона" Width="150" />
                 <DataGridTextColumn Binding="{Binding User.Address}" Header="Адрес" Width="*" />
                 <DataGridTextColumn Binding="{Binding User.EMail}" Header="Почта" Width="*" />
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="330">
                     <DataGridTemplateColumn.Header>
                         <TextBlock Text="Статус заказа" />
                     </DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding}" />
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Padding" Value="5 3"/>
+                                        <Setter Property="Margin" Value="5"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Button Command="{StaticResource DeliveringStatusCommand}" CommandParameter="{Binding}" Content="Доставляется" />
+                                <Button Command="{StaticResource DeliveredStatusCommand}" CommandParameter="{Binding}" Content="Доставлено" />
+                                <Button Command="{StaticResource DeclinedStatusCommand}" CommandParameter="{Binding}" Content="Отклонено" />
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -98,8 +98,11 @@
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Commands\AddToBasketCommand.cs" />
     <Compile Include="Infrastructure\Commands\Command.cs" />
+    <Compile Include="Infrastructure\Commands\DeclinedStatusCommand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteAdminCommand.cs" />
     <Compile Include="Infrastructure\Commands\DeleteProductCommand.cs" />
+    <Compile Include="Infrastructure\Commands\DeliveredStatusCommand.cs" />
+    <Compile Include="Infrastructure\Commands\DeliveringStatusCommand.cs" />
     <Compile Include="Infrastructure\Commands\EditProductCommand.cs" />
     <Compile Include="Infrastructure\Commands\FavoriteCommand.cs" />
     <Compile Include="Infrastructure\Commands\OpenProductCommand.cs" />

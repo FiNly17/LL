@@ -68,17 +68,17 @@
                 </Style>
             </DockPanel.Resources>
             <Grid>
-                <!--<Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail3.gif" />-->
+                <Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail3.gif" />
                 <TextBlock Text="SCARLXRD" />
                 <Button Content="Перейти" x:Name="GoesSL" Click="GoesSL_Click" />
             </Grid>
             <Grid>
-                <!--<Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail2.gif" />-->
+                <Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail2.gif" />
                 <TextBlock Text="Ghostemane" />
                 <Button Content="Перейти" x:Name="GoesGh" Click="GoesGh_Click" />
             </Grid>
             <Grid>
-                <!--<Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail1.gif" />-->
+                <Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail1.gif" />
                 <TextBlock Text="$uicide Boy$" />
                 <Button Content="Перейти" x:Name="GoesSS" Click="GoesSS_Click" />
             </Grid>
