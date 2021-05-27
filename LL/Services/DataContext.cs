@@ -15,7 +15,7 @@ namespace LL.Services
 
 		static DataContext()
 		{
-			connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+			connectionString = ConfigurationManager.ConnectionStrings["DbConnectionCHIS"].ConnectionString;
 
 			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
 		}

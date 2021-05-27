@@ -3,6 +3,7 @@
 	public enum Pages
 	{
 		MainPage,
+		BookmarkPage,
 		CatalogPage,
 		OrderPage
 	}

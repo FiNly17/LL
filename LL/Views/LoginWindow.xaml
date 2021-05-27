@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         xmlns:local="clr-namespace:LL"
         xmlns:vm="clr-namespace:LL.ViewModels"
         mc:Ignorable="d"
@@ -66,22 +66,19 @@
             <RowDefinition Height="250" />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
-        <Image Opacity="0.3" Grid.Row="0" Grid.RowSpan="4" Width="400" Height="500" gif:ImageBehavior.AnimatedSource="/Images/lightning.gif" />
+        <!--<Image Opacity="0.3" Grid.Row="0" Grid.RowSpan="4" Width="400" Height="500" gif:AnimationBehavior.SourceUri="/Resources/Lightning.gif" />-->
         <Grid Name="ToolBar" Background="Transparent" MouseDown="ToolBar_MouseDown">
             <Polygon Fill="White" Opacity="0.2" Points="125,0,133,7,267,7,275,0" />
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
                 <Button materialDesign:RippleAssist.IsDisabled="True" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Height="20" Padding="0 0"
                         x:Name="MinimizeWindow_Button" Click="MinimizeWindow_Button_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize"
-                                             Margin="0 0"
-                                             Width="20"
-                                             Height="20"/>
+                    <materialDesign:PackIcon Kind="WindowMinimize" Margin="0" Width="20" Height="20" />
                     <Button.Resources>
                         <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="Foreground" Value="DimGray"/>
+                            <Setter Property="Foreground" Value="DimGray" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Foreground" Value="White" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -92,13 +89,13 @@
                     <materialDesign:PackIcon Kind="WindowClose"
                                              Margin="0, 0,5,0"
                                              Width="20"
-                                             Height="20"/>
+                                             Height="20" />
                     <Button.Resources>
                         <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="Foreground" Value="DimGray"/>
+                            <Setter Property="Foreground" Value="DimGray" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Foreground" Value="White" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -107,7 +104,7 @@
             </StackPanel>
         </Grid>
         <Grid Background="Transparent" Grid.Row="1" Name="Logo">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/ll.png" />
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/ll.png" />
         </Grid>
         <TextBox Text="{Binding Login}" x:Name="Login" Grid.Row="2" Margin="75,40,75,0" VerticalAlignment="Top"
                  Style="{StaticResource TB}" VerticalContentAlignment="Center" />

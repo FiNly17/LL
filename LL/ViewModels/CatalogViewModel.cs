@@ -11,12 +11,22 @@ namespace LL.ViewModels
 {
 	public class CatalogViewModel : ViewModel
 	{
+		public static string InitialQuery { get; set; }
+
 		private string _query = string.Empty;
 
 		public string Query
 		{
 			get { return _query; }
 			set { SetProperty(ref _query, value); }
+		}
+
+		private List<Product> _bookmarks;
+
+		public List<Product> Bookmarks
+		{
+			get { return _bookmarks; }
+			set { SetProperty(ref _bookmarks, value); }
 		}
 
 		private List<Product> _searchResult;
@@ -55,7 +65,10 @@ namespace LL.ViewModels
 
 		public CatalogViewModel()
 		{
+			Bookmarks = (UserManager.CurrentUser as User).Bookmarks;
+
 			SearchCommand = new RelayCommand(OnSearchCommandExecuted, CanSearchCommandExecute);
+			Query = InitialQuery;
 			Search();
 		}
 

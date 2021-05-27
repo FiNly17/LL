@@ -38,7 +38,7 @@
         </StackPanel>
 
         <materialDesign:Card DockPanel.Dock="Top" Background="Gray" Width="600" Margin="20 0 20 20">
-        <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20 10">
+            <DockPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="20 10">
                 <ComboBox SelectedIndex="{Binding SortIndex}" Style="{StaticResource MaterialDesignComboBox}" Margin="20 0">
                     <ComboBoxItem Content="Размер" />
                     <ComboBoxItem Content="Бренд" />
@@ -46,29 +46,28 @@
                 </ComboBox>
                 <Button Style="{StaticResource MaterialDesignRaisedButton}" Command="{Binding SearchCommand}"
                         DockPanel.Dock="Right" Width="100">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" />
-                    <TextBlock Text="Поиск" VerticalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <TextBox Text="{Binding Query, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" VerticalAlignment="Center"
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" />
+                        <TextBlock Text="Поиск" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <TextBox Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"
                          x:Name="Query_TextBox" Margin="10 0" DockPanel.Dock="Right" Background="Gray"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          Padding="10 5" HorizontalAlignment="Stretch" materialDesign:HintAssist.Foreground="Black"
                          materialDesign:HintAssist.Hint="Введите запрос" materialDesign:TextFieldAssist.UnderlineBrush="Black">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Return" Command="{Binding SearchCommand}" />
-                </TextBox.InputBindings>
-            </TextBox>
-        </DockPanel>
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Return" Command="{Binding SearchCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+            </DockPanel>
         </materialDesign:Card>
 
         <ScrollViewer DockPanel.Dock="Bottom">
             <ListBox ItemsSource="{Binding SearchResult}" ItemTemplate="{StaticResource Field}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel IsItemsHost="True" HorizontalAlignment="Center">
-                        </WrapPanel>
+                        <WrapPanel IsItemsHost="True" HorizontalAlignment="Center" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>

@@ -2,6 +2,7 @@
 
 using LL.Models;
 using LL.Services;
+using LL.Views;
 
 namespace LL.Infrastructure.Commands
 {
@@ -15,10 +16,13 @@ namespace LL.Infrastructure.Commands
 			{
 				var user = UserManager.CurrentUser as User;
 				if (user.Bookmarks.Contains(product))
+				{
 					user.Bookmarks.Remove(product);
+					if (MainWindow.Instance.CurrentPage == Pages.BookmarkPage)
+						MainWindow.Instance.Refresh();
+				}
 				else
 					user.Bookmarks.Add(product);
-				
 			}
 			else
 				throw new NotImplementedException();

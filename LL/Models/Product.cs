@@ -42,6 +42,9 @@ namespace LL.Models
 		[NotMapped]
 		public bool IsFavorite => (UserManager.CurrentUser as User).Bookmarks.Any(item => item == this);
 
+		[NotMapped]
+		public bool IsInBasket => BasketManager.Products.Contains(this);
+
 		public Product() => Id = -1;
 
 		protected Product(string model, string brand, double price, byte[] image, ProductTypes type)

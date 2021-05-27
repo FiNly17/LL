@@ -27,14 +27,14 @@
         </Style.Resources>
     </Style>
 
-    <DataTemplate x:Key="Field" DataType="{x:Type models:Shoes}">
+    <DataTemplate x:Key="Field" DataType="{x:Type models:Product}">
         <Border BorderBrush="White" BorderThickness="2">
             <materialDesign:Card Width="250" Height="300"
                              Background="{StaticResource MaterialDesignBody}">
                 <materialDesign:Card.InputBindings>
                     <MouseBinding MouseAction="LeftClick"
-                              CommandParameter="{Binding}"
-                              Command="{StaticResource OpenProductCommand}">
+                                  CommandParameter="{Binding}"
+                                  Command="{StaticResource OpenProductCommand}">
                     </MouseBinding>
                 </materialDesign:Card.InputBindings>
 
@@ -46,30 +46,30 @@
 
                     <Image Source="{Binding Image}" Stretch="Fill"
                        Grid.Row="0" Margin="-1" />
-                    <Button materialDesign:RippleAssist.IsDisabled="True" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-10,10" Width="70" Background="Transparent" BorderThickness="0" Height="35">
-                        <materialDesign:PackIcon x:Name="HeartIcon"
-                                                 HorizontalAlignment="Center"
-                                                 Height="30"
-                                                 Width="30">
-                            <materialDesign:PackIcon.InputBindings>
-                                <MouseBinding MouseAction="LeftClick"
-                              CommandParameter="{Binding}"
-                              Command="{StaticResource FavoriteCommand}">
-                                </MouseBinding>
-                            </materialDesign:PackIcon.InputBindings>
-                        </materialDesign:PackIcon>
-                        <Button.Resources>
-                            <Style TargetType="materialDesign:PackIcon">
-                                <Setter Property="Kind" Value="HeartOutline"/>
-                                <Setter Property="Foreground" Value="White"/>
+                    <Button materialDesign:RippleAssist.IsDisabled="True" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                            Margin="0,0,10,10" Width="50"  Height="50" Background="Gray" BorderThickness="0"
+                            CommandParameter="{Binding}" Command="{StaticResource FavoriteCommand}">
+
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFloatingActionButton}">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <materialDesign:PackIcon Kind="Heart" Foreground="White" Width="30" Height="30"/>
+                                    </Setter.Value>
+                                </Setter>
+
                                 <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="Red"/>
-                                    </Trigger>
+                                    <DataTrigger Binding="{Binding IsFavorite}" Value="True">
+                                        <Setter Property="Foreground" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsFavorite}" Value="False">
+                                        <Setter Property="Foreground" Value="White" />
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </Button.Resources>
+                        </Button.Style>
                     </Button>
+
                     <materialDesign:ColorZone Mode="Dark" Grid.Row="1" VerticalAlignment="Stretch">
                         <StackPanel>
                             <TextBlock Text="{Binding Price, StringFormat=\{0:c\}}"
@@ -96,7 +96,7 @@
                                TextAlignment="Left"
                                TextWrapping="Wrap"
                                Padding="5" />
-                                <TextBlock Text="{Binding Size}"
+                                <TextBlock Text="{Binding SizeStr}"
 
                                VerticalAlignment="Center"
                                FontSize="14"

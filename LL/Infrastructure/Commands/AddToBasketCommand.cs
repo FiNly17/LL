@@ -16,7 +16,7 @@ namespace LL.Infrastructure.Commands
 		public override void Execute(object parameter)
 		{
 			if (parameter is Product product)
-				Basket.Add(product);
+				BasketManager.Add(product);
 			else
 				throw new InvalidOperationException();
 		}

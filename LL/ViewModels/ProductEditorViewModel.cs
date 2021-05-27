@@ -145,7 +145,7 @@ namespace LL.ViewModels
 					product.Model = Model;
 					product.Brand = Brand;
 					product.Type = Type;
-					product.Price = Convert.ToDouble(Price);
+					product.Price = Convert.ToDouble(Price.Replace('.', ','));
 					product.Image = Image;
 
 					DataContext.GetInstance().SaveChanges();

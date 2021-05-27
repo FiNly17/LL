@@ -3,7 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:LL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:LL.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
       mc:Ignorable="d"
       d:DesignHeight="600" d:DesignWidth="1520"
       Title="MainPage">
@@ -32,19 +34,58 @@
         </Style>
     </Page.Resources>
     <ScrollViewer>
-        <StackPanel>
-            <MediaElement Height="300" VerticalAlignment="Top" x:Name="SCARLXRD" LoadedBehavior="Play" RenderOptions.BitmapScalingMode="HighQuality" Source="Images\scarlxrd - EVIL EGX.mp4" Stretch="UniformToFill" UnloadedBehavior="Play" />
-            <TextBox Margin="0,-400,0,0" Width="350" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="70" FontWeight="Medium"  HorizontalAlignment="Center"  Text="SCARLXRD" Height="90" />
-            <Button Style="{StaticResource buttonAuthor}" Margin="0,-200,0,0" Content="Перейти" x:Name="GoesSL" />
-            <MediaElement Height="300" VerticalAlignment="Top" x:Name="media" LoadedBehavior="Play" RenderOptions.BitmapScalingMode="HighQuality" Source="Images\ghost2.mp4" Stretch="UniformToFill" UnloadedBehavior="Play" />
-            <TextBox Margin="0,-400,0,0" Width="400" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="70" FontWeight="Medium" HorizontalAlignment="Center"  Text="Ghostemane" Height="90" />
-            <Button Style="{StaticResource buttonAuthor}" Margin="0,-200,0,0" Content="Перейти" x:Name="GoesGh" />
-            <MediaElement Height="300" VerticalAlignment="Top" x:Name="SS" LoadedBehavior="Play" RenderOptions.BitmapScalingMode="HighQuality"  Source="Images\$$1.mp4" Stretch="UniformToFill" UnloadedBehavior="Play" />
-            <TextBox Margin="0,-400,0,0" Width="420" Background="Transparent" BorderThickness="0" Foreground="White" FontSize="70" FontWeight="Medium" HorizontalAlignment="Center"  Text="$uicide Boy$" Height="90" />
-            <Button Style="{StaticResource buttonAuthor}" Margin="0,-200,0,0" Content="Перейти" x:Name="GoesSS" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <DockPanel>
+            <DockPanel.Resources>
+                <Style TargetType="Grid">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="DockPanel.Dock" Value="Top" />
+                    <Style.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Height" Value="300" />
+                            <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="Stretch" Value="UniformToFill" />
+                            <Setter Property="DockPanel.Dock" Value="Top" />
+                            <Setter Property="gif:AnimationBehavior.AutoStart" Value="True" />
+                            <Setter Property="gif:AnimationBehavior.RepeatBehavior" Value="Forever" />
+                        </Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Margin" Value="0 0 0 100" />
+                            <Setter Property="FontSize" Value="70" />
+                            <Setter Property="FontWeight" Value="Medium" />
+                            <Setter Property="Height" Value="90" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource buttonAuthor}">
+                            <Setter Property="Margin" Value="0 100 0 0" />
+                            <Setter Property="FontWeight" Value="Medium" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </DockPanel.Resources>
+            <Grid>
+                <!--<Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail3.gif" />-->
+                <TextBlock Text="SCARLXRD" />
+                <Button Content="Перейти" x:Name="GoesSL" Click="GoesSL_Click" />
+            </Grid>
+            <Grid>
+                <!--<Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail2.gif" />-->
+                <TextBlock Text="Ghostemane" />
+                <Button Content="Перейти" x:Name="GoesGh" Click="GoesGh_Click" />
+            </Grid>
+            <Grid>
+                <!--<Image gif:AnimationBehavior.SourceUri="/Resources/Thumbnail1.gif" />-->
+                <TextBlock Text="$uicide Boy$" />
+                <Button Content="Перейти" x:Name="GoesSS" Click="GoesSS_Click" />
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Top">
                 <StackPanel.Resources>
                     <Style TargetType="materialDesign:PackIcon">
+                        <Setter Property="Foreground" Value="Gray" />
                         <Setter Property="Width" Value="30" />
                         <Setter Property="Height" Value="30" />
                     </Style>
@@ -53,7 +94,7 @@
                 <materialDesign:PackIcon Kind="Facebook" />
                 <materialDesign:PackIcon Kind="Vkontakte" />
             </StackPanel>
-            <TextBox HorizontalAlignment="Center" FontSize="19" Margin="0,40,0,0" Foreground="FloralWhite" Opacity="0.7">Copyright © 2021. Scarlxrd LTD. All Rights Reserved</TextBox>
-        </StackPanel>
+            <TextBlock Text="© 2021. Scarlxrd LTD. All Rights Reserved" HorizontalAlignment="Center" FontSize="19" Margin="0,0,0,0" Foreground="FloralWhite" Opacity="0.7" />
+        </DockPanel>
     </ScrollViewer>
 </Page>

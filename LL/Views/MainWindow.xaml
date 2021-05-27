@@ -39,50 +39,50 @@
             <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left" Orientation="Horizontal" Margin="20 0 0 0">
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" FontWeight="Regular"
-                            Margin="4,30,50,10" IsChecked="True" Content="Главная"
-                                 x:Name="Places_Button" Height="Auto" Click="MainPage_Button_Click" />
+                             Margin="4,30,50,10" IsChecked="True" Content="Главная"
+                             x:Name="Places_Button" Height="Auto" Click="MainPage_Button_Click" />
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" Margin="50,30,50,10"
                              Content="Каталог" Height="Auto" FontWeight="Regular"
-                                x:Name="Catalog_Button" Click="Catalog_Button_Click" />
+                             x:Name="Catalog_Button" Click="Catalog_Button_Click" />
                 <RadioButton Style="{StaticResource MaterialDesignTabRadioButton}"
                              FontSize="30" Foreground="White" Margin="50,34,0,10"
-                             Content="Избранное" Height="Auto" FontWeight="Regular" 
-                               x:Name="Bookmarks_Button" Click="BookmarksPage_Button_Click"/>
+                             Content="Избранное" Height="Auto" FontWeight="Regular"
+                             x:Name="Bookmarks_Button" Click="BookmarksPage_Button_Click" />
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
                 <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="45" Click="Basket_Window_Click">
                     <materialDesign:PackIcon Kind="BasketOutline"
                                              Foreground="White"
                                              Height="40"
-                                             Width="40"/>
+                                             Width="40" />
                 </Button>
                 <Button materialDesign:RippleAssist.IsDisabled="True" Margin="0,0,-10,0" Background="Transparent" BorderThickness="0" Height="45" Click="MinimizeWindow_Button_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize" 
+                    <materialDesign:PackIcon Kind="WindowMinimize"
                                              Height="40"
-                                             Width="40"/>
+                                             Width="40" />
                     <Button.Resources>
                         <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Foreground" Value="White" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="Red"/>
+                                    <Setter Property="Foreground" Value="Red" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Resources>
                 </Button>
                 <Button materialDesign:RippleAssist.IsDisabled="True" Background="Transparent" BorderThickness="0" Height="45" Click="Close_Button_Click">
-                    <materialDesign:PackIcon Kind="WindowClose" 
+                    <materialDesign:PackIcon Kind="WindowClose"
                                              Height="40"
-                                             Width="40"/>
+                                             Width="40" />
                     <Button.Resources>
                         <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Foreground" Value="White" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="Red"/>
+                                    <Setter Property="Foreground" Value="Red" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -93,10 +93,10 @@
             <Grid Margin="0,0,25,0" Width="150" DockPanel.Dock="Right" HorizontalAlignment="Right">
                 <Button x:Name="Profile" Style="{StaticResource btnProfile}" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FaceManProfile" 
+                        <materialDesign:PackIcon Kind="FaceManProfile"
                                                  Width="30"
-                                                 Height="30"/>
-                        <TextBlock Text="Профиль"/>
+                                                 Height="30" />
+                        <TextBlock Text="Профиль" />
                     </StackPanel>
                 </Button>
             </Grid>

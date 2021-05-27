@@ -24,6 +24,7 @@
 
             <DockPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                 <Button Style="{StaticResource MaterialDesignRaisedButton}" Command="{Binding SearchCommand}"
+                        CommandParameter="{StaticResource False}"
                         DockPanel.Dock="Right" Width="100">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Search" VerticalAlignment="Center" />
@@ -45,7 +46,7 @@
                   VirtualizingPanel.ScrollUnit="Pixel" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="50" />
-                <DataGridTextColumn Binding="{Binding FullName}" Header="ФИО" Width="200" />
+                <DataGridTextColumn Binding="{Binding ProductsStr}" Header="ФИО" Width="200" />
                 <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="150" />
                 <DataGridTextColumn Binding="{Binding EMail}" Header="Почта" Width="200" />
                 <DataGridTextColumn Binding="{Binding Phone}" Header="Номер телефона" Width="150" />

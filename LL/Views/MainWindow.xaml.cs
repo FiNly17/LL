@@ -10,21 +10,16 @@ namespace LL.Views
 	public partial class MainWindow : Window
 	{
 		public static MainWindow Instance { get; private set; }
-		public static Pages CurrentPage { get; private set; }
+		public Pages CurrentPage { get; private set; }
 
 		public MainWindow()
 		{
 			InitializeComponent();
-			Pages page = Pages.MainPage;
-			Page content1 = new HomePage();
-			CurrentPage = page;
-			MainContent.Content = content1;
+			Instance = this;
+			SwitchPage(Pages.MainPage);
 		}
 
-		private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-		{
-			Close();
-		}
+		public void Refresh() => SwitchPage(CurrentPage);
 
 		public void SwitchPage(Pages page)
 		{
@@ -39,10 +34,12 @@ namespace LL.Views
 				case Pages.CatalogPage:
 					content = new CatalogPage();
 					break;
-                case Pages.OrderPage:
-                    content = new BookmarksPage();
-                    break;
-                default:
+
+				case Pages.BookmarkPage:
+					content = new BookmarksPage();
+					break;
+
+				default:
 					MessageBox.Show("Страница не найдена");
 					content = new HomePage();
 					break;
@@ -51,19 +48,20 @@ namespace LL.Views
 			CurrentPage = page;
 			MainContent.Content = content;
 		}
-		private void MinimizeWindow_Button_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
 
 		private void Basket_Window_Click(object sender, RoutedEventArgs e)
-        {
+		{
 			BasketWindow bw = new BasketWindow();
-			bw.Show();
-        }
+			bw.ShowDialog();
+		}
+
+		private void MinimizeWindow_Button_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
 
 		private void Close_Button_Click(object sender, RoutedEventArgs e) => Close();
 
 		private void MainPage_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.MainPage);
 
-		private void BookmarksPage_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.OrderPage);
+		private void BookmarksPage_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.BookmarkPage);
 
 		private void Catalog_Button_Click(object sender, RoutedEventArgs e) => SwitchPage(Pages.CatalogPage);
 
