@@ -18,6 +18,7 @@ namespace LL.Infrastructure.Commands
 					user.Bookmarks.Remove(product);
 				else
 					user.Bookmarks.Add(product);
+				
 			}
 			else
 				throw new NotImplementedException();

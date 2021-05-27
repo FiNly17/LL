@@ -16,14 +16,7 @@
     </Window.DataContext>
 
     <Window.Resources>
-        <Style x:Key="TBVis" TargetType="{x:Type TextBlock}">
-            <Setter Property="Visibility" Value="Collapsed" />
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding Text, ElementName=Login}" Value="">
-                    <Setter Property="Visibility" Value="Visible" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
+        
         <Style x:Key="TB" TargetType="TextBox">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -127,23 +120,122 @@
             </StackPanel>
         </Grid>
         <TextBox Text="{Binding Login}" x:Name="Login" Grid.Column="0" Grid.Row="2" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Логин" />
+        <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Логин">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Login}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding Password}" x:Name="Password" Grid.Row="2" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Пароль" />
-        <TextBox Text="{Binding PasswordRepeat}" Visibility="Visible" x:Name="Rewrite_Pass" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Visibility="Visible" x:Name="Rewrite_Pass_Block" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Введите пароль ещё раз" />
+        <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Пароль">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Password}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <TextBox Text="{Binding PasswordRepeat}" x:Name="Rewrite_Pass" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
+        <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Введите пароль ещё раз">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Rewrite_Pass}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding EMail}" x:Name="Email" Grid.Row="2" Margin="0,190,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Email" />
+        <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Email">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Email}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding Phone}" x:Name="Phone" Grid.Row="2" Margin="0,240,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,246,0,0" VerticalAlignment="Top" Text="Телефон" />
+        <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,246,0,0" VerticalAlignment="Top" Text="Телефон">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Phone}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding Surname}" x:Name="Surname" Grid.Row="2" Grid.Column="1" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" Text="Фалмилия" />
+        <TextBlock Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,46,0,0" VerticalAlignment="Top" Text="Фалмилия">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Surname}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding Name}" x:Name="Name_TextBox" Grid.Row="2" Grid.Column="1" Margin="0,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Имя" />
+        <TextBlock Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,96,0,0" VerticalAlignment="Top" Text="Имя">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Name_TextBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding MiddleName}" x:Name="MiddleName" Grid.Column="1" Grid.Row="2" Margin="0,140,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" Text="Отчество" />
+        <TextBlock Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,146,0,0" VerticalAlignment="Top" Text="Отчество">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=MiddleName}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <TextBox Text="{Binding Address}" Grid.Column="1" x:Name="Address" Grid.Row="2" Margin="0,190,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />
-        <TextBlock Style="{StaticResource TBVis}" Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Адрес" />
+        <TextBlock Grid.Column="1" Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="65,196,0,0" VerticalAlignment="Top" Text="Адрес">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Address}" Value="">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
 
         <Button Command="{Binding RegistrationCommand}" x:Name="myButton" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Зарегистрироваться" Height="30" Width="170" Background="#FF333333" Foreground="#FF7C7C7C">
             <Button.Template>

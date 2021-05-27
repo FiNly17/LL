@@ -134,6 +134,7 @@
     <Compile Include="ViewModels\ProductEditorViewModel.cs" />
     <Compile Include="ViewModels\ProductInfoViewModel.cs" />
     <Compile Include="ViewModels\ProductsTableViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\UsersTableViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
@@ -177,6 +178,9 @@
     </Compile>
     <Compile Include="Views\ProductsTablePage.xaml.cs">
       <DependentUpon>ProductsTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfileWindow.xaml.cs">
+      <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
@@ -256,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductsTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProfileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
