@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 using LL.Infrastructure.Commands;
@@ -20,28 +21,28 @@ namespace LL.ViewModels
 			set { SetProperty(ref _login, value); }
 		}
 
-		private string _password = string.Empty;
-
-		public string Password
-		{
-			get { return _password; }
-			set { SetProperty(ref _password, value); }
-		}
-
 		public ICommand LoginCommand { get; set; }
 
 		private static bool CanLoginCommandExecute(object p) => UserManager.CurrentUser == null;
 
-		private void OnLoginCommandExecuted(object p) => ProcessLogin();
+		private void OnLoginCommandExecuted(object p) => ProcessLogin(p);
 
 		public LoginViewModel()
 		{
 			LoginCommand = new RelayCommand(OnLoginCommandExecuted, CanLoginCommandExecute);
 		}
 
-		private void ProcessLogin()
+		private void ProcessLogin(object p)
 		{
-			if (UserManager.Login(Login, Password))
+			string password = (p as PasswordBox).Password;
+
+			if (string.IsNullOrEmpty(password))
+			{
+				MessageBox.Show("Введите пароль");
+				return;
+			}
+
+			if (UserManager.Login(Login, password))
 			{
 				Window window;
 				if (UserManager.AccountType == Models.AccountType.User)

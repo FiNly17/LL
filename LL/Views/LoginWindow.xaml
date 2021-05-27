@@ -107,35 +107,15 @@
             <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/ll.png" />
         </Grid>
         <TextBox Text="{Binding Login}" x:Name="Login" Grid.Row="2" Margin="75,40,75,0" VerticalAlignment="Top"
-                 Style="{StaticResource TB}" VerticalContentAlignment="Center" />
-        <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="85,46,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Email или номер телефона">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=Login}" Value="">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <TextBox Text="{Binding Password}" x:Name="Password" Grid.Row="2" Margin="75,90,75,0" VerticalAlignment="Top"
-                 Style="{StaticResource TB}" VerticalContentAlignment="Center">
-        </TextBox>
-        <TextBlock Foreground="#FF676767" Grid.Row="2" IsHitTestVisible="False" FontSize="11" FontStyle="Italic" Margin="85,96,0,0" VerticalAlignment="Top" Text="Пароль">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=Password}" Value="">
-                            <Setter Property="Visibility" Value="Visible" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <Button Command="{Binding LoginCommand}" x:Name="myButton" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="125,140,0,0" Grid.Row="2" Content="Авторизоваться" Height="30" Width="150" Background="#FF333333" Foreground="#FF7C7C7C">
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalContentAlignment="Center" 
+                 materialDesign:HintAssist.Hint="Введите почту или телефон" Foreground="White"/>
+
+        <PasswordBox x:Name="Password" Grid.Row="2" Margin="75,90,75,0" VerticalAlignment="Top"
+                     VerticalContentAlignment="Center" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                     materialDesign:HintAssist.Hint="Введите пароль" Foreground="White">
+        </PasswordBox>
+
+        <Button Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=Password}" x:Name="myButton" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="125,140,0,0" Grid.Row="2" Content="Авторизоваться" Height="30" Width="150" Background="#FF333333" Foreground="#FF7C7C7C">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="buttonBorder" CornerRadius="4"
