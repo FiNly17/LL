@@ -46,29 +46,28 @@
                   VirtualizingPanel.ScrollUnit="Pixel" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="50" />
-                <DataGridTextColumn Binding="{Binding ProductsStr}" Header="ФИО" Width="200" />
-                <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="150" />
-                <DataGridTextColumn Binding="{Binding EMail}" Header="Почта" Width="200" />
-                <DataGridTextColumn Binding="{Binding Phone}" Header="Номер телефона" Width="150" />
-                <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="*" />
+                <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Время заказа" Width="150" />
+                <DataGridTextColumn Binding="{Binding User.FullName}" Header="Заказчик" Width="200" />
+                <DataGridTextColumn Binding="{Binding User.Phone}" Header="Номер телефона" Width="150" />
+                <DataGridTextColumn Binding="{Binding User.Address}" Header="Адрес" Width="*" />
+                <DataGridTextColumn Binding="{Binding User.EMail}" Header="Почта" Width="*" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="Статус заказа" />
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" />
-                            <DataGridTextColumn Binding="{Binding Price, StringFormat=\{0:c\}}" />
-                            <DataGridTextColumn Binding="{Binding Products.Count}" />
+                            <DataGridTextColumn Binding="{Binding FullName}" Header="Товары" />
                         </DataGrid.Columns>
-                        <DataGrid.RowDetailsTemplate>
-                            <DataTemplate>
-                                <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False" IsReadOnly="True">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{Binding }" />
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </DataTemplate>
-                        </DataGrid.RowDetailsTemplate>
                     </DataGrid>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>

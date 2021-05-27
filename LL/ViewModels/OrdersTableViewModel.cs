@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 
 using LL.Infrastructure.Commands;
@@ -27,6 +28,9 @@ namespace LL.ViewModels
 			get => _searchResult;
 			set => SetProperty(ref _searchResult, value);
 		}
+
+		public List<OrderStatuses> AvailableOrderStatuses => new List<OrderStatuses>() {
+			OrderStatuses.DeliveryInProgress, OrderStatuses.Delivered, OrderStatuses.Declined };
 
 		#region Commands
 

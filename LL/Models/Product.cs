@@ -59,6 +59,23 @@ namespace LL.Models
 		}
 
 		public virtual string ForSearch() => $"{Id} {Model} {Brand} {Type.Rus()} {Price} {SizeStr}".ToLower();
+
+		public override bool Equals(object obj)
+		{
+			return obj is Product product &&
+				   Model == product.Model &&
+				   Brand == product.Brand &&
+				   Type == product.Type;
+		}
+
+		public override int GetHashCode()
+		{
+			int hashCode = 125786637;
+			hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Model);
+			hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Brand);
+			hashCode = hashCode * -1521134295 + Type.GetHashCode();
+			return hashCode;
+		}
 	}
 
 	public enum ProductTypes

@@ -26,6 +26,24 @@ namespace LL.Models
 		[NotMapped]
 		public double Price => Products.Sum(item => item.Price);
 
+		[NotMapped]
+		public string NextStatus
+		{
+			get
+			{
+				switch (Status)
+				{
+					case OrderStatuses.AwaitingConfirmation:
+						return "Доставляется";
+
+					case OrderStatuses.DeliveryInProgress:
+						return "Доставлено";
+				}
+
+				return string.Empty;
+			}
+		}
+
 		public Order() => Id = -1;
 
 		public Order(User user, List<Product> products, DateTime date)

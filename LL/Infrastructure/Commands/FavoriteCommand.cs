@@ -14,15 +14,20 @@ namespace LL.Infrastructure.Commands
 		{
 			if (parameter is Product product)
 			{
-				var user = UserManager.CurrentUser as User;
-				if (user.Bookmarks.Contains(product))
+				if ((UserManager.CurrentUser as User).Bookmarks.Contains(product))
 				{
-					user.Bookmarks.Remove(product);
+					var userctx = DataContext.GetInstance().Accounts.Find(UserManager.CurrentUser.Id) as User;
+					userctx.Bookmarks.Remove(product);
+					DataContext.GetInstance().SaveChanges();
+
 					if (MainWindow.Instance.CurrentPage == Pages.BookmarkPage)
 						MainWindow.Instance.Refresh();
 				}
 				else
-					user.Bookmarks.Add(product);
+				{
+					(DataContext.GetInstance().Accounts.Find(UserManager.CurrentUser.Id) as User).Bookmarks.Add(product);
+					DataContext.GetInstance().SaveChanges();
+				}
 			}
 			else
 				throw new NotImplementedException();
