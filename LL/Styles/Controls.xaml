@@ -58,12 +58,20 @@
                                     </Setter.Value>
                                 </Setter>
 
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsFavorite}" Value="True">
-                                        <Setter Property="Foreground" Value="Red" />
+                                <Style.Triggers>                                   
+                                    <DataTrigger Binding="{Binding IsFavorite, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <materialDesign:PackIcon Kind="Heart" Foreground="Red" Width="30" Height="30"/>
+                                            </Setter.Value>
+                                        </Setter>
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding IsFavorite}" Value="False">
-                                        <Setter Property="Foreground" Value="White" />
+                                    <DataTrigger Binding="{Binding IsFavorite, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <materialDesign:PackIcon Kind="Heart" Foreground="White" Width="30" Height="30"/>
+                                            </Setter.Value>
+                                        </Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

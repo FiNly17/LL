@@ -20,14 +20,14 @@ namespace LL.Infrastructure.Commands
 					userctx.Bookmarks.Remove(product);
 					DataContext.GetInstance().SaveChanges();
 
-					if (MainWindow.Instance.CurrentPage == Pages.BookmarkPage)
-						MainWindow.Instance.Refresh();
 				}
 				else
 				{
 					(DataContext.GetInstance().Accounts.Find(UserManager.CurrentUser.Id) as User).Bookmarks.Add(product);
 					DataContext.GetInstance().SaveChanges();
+					
 				}
+				MainWindow.Instance.Refresh();
 			}
 			else
 				throw new NotImplementedException();
