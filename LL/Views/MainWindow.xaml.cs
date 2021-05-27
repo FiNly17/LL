@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
+
+using LL.ViewModels;
 
 namespace LL.Views
 {
@@ -17,6 +18,7 @@ namespace LL.Views
 			InitializeComponent();
 			Instance = this;
 			SwitchPage(Pages.MainPage);
+			(DataContext as MainViewModel).CloseRequest += (sender, e) => Close();
 		}
 
 		public void Refresh() => SwitchPage(CurrentPage);

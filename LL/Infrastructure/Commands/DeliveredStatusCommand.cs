@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using LL.Models;
 using LL.Services;
@@ -17,7 +13,7 @@ namespace LL.Infrastructure.Commands
 		{
 			if (parameter is Order order)
 			{
-				DataContext.GetInstance().Orders.Find(order.Id).Status = OrderStatuses.DeliveryInProgress;
+				DataContext.GetInstance().Orders.Find(order.Id).Status = OrderStatuses.Delivered;
 				DataContext.GetInstance().SaveChanges();
 				SMTPClient.SendMail(UserManager.CurrentUser.FullName, order.User.EMail, order.User.FullName, "Изменение статуса заказа",
 					$"Ваш заказ {order.Id} доставлен");

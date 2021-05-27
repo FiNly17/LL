@@ -55,19 +55,10 @@
                 <DataTemplate>
                     <DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False" IsReadOnly="True">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" />
-                            <DataGridTextColumn Binding="{Binding Price, StringFormat=\{0:c\}}" />
-                            <DataGridTextColumn Binding="{Binding Products.Count}" />
+                            <DataGridTextColumn Binding="{Binding Date, StringFormat=\{0:dd.MM.yy HH:mm:ss\}}" Header="Время заказа" />
+                            <DataGridTextColumn Binding="{Binding Price, StringFormat=\{0:c\}}" Header="Цена" />
+                            <DataGridTextColumn Binding="{Binding Products.Count}" Header="Кол-во товаров" />
                         </DataGrid.Columns>
-                        <DataGrid.RowDetailsTemplate>
-                            <DataTemplate>
-                                <DataGrid ItemsSource="{Binding Products}" AutoGenerateColumns="False" IsReadOnly="True">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="{Binding }" />
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </DataTemplate>
-                        </DataGrid.RowDetailsTemplate>
                     </DataGrid>
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>

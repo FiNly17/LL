@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 
 using LL.ViewModels;
-using LL.Services;
-using LL.Models;
 
 namespace LL.Views
 {
@@ -14,6 +12,12 @@ namespace LL.Views
 		public ProductInfoWindow()
 		{
 			InitializeComponent();
+			CheckReview();
+			(DataContext as ProductInfoViewModel).Reviewed += (sender, e) => CheckReview();
+		}
+
+		private void CheckReview()
+		{
 			if ((DataContext as ProductInfoViewModel).IsReviewed)
 				NewReview_StackPanel.Visibility = Visibility.Collapsed;
 		}

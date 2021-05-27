@@ -108,7 +108,6 @@
     <Compile Include="Infrastructure\Commands\OpenProductCommand.cs" />
     <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
     <Compile Include="Infrastructure\Commands\RemoveFromBasketCommand.cs" />
-    <Compile Include="Infrastructure\Converter.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Infrastructure\ImageProvider.cs" />
     <Compile Include="Infrastructure\Commands\SwitchAdminPageCommand.cs" />
@@ -137,11 +136,11 @@
     <Compile Include="ViewModels\BasketViewModel.cs" />
     <Compile Include="ViewModels\CatalogViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\OrdersTableViewModel.cs" />
     <Compile Include="ViewModels\ProductEditorViewModel.cs" />
     <Compile Include="ViewModels\ProductInfoViewModel.cs" />
     <Compile Include="ViewModels\ProductsTableViewModel.cs" />
-    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\UsersTableViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
@@ -185,9 +184,6 @@
     </Compile>
     <Compile Include="Views\ProductsTablePage.xaml.cs">
       <DependentUpon>ProductsTablePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProfileWindow.xaml.cs">
-      <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
@@ -267,10 +263,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductsTablePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ProfileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

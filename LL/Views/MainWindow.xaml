@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:LL.Views"
+        xmlns:vm="clr-namespace:LL.ViewModels"
         mc:Ignorable="d"
         Title="Window_Of_Project" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         WindowStyle="None" Background="Black">
+
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
 
     <Window.Resources>
         <Style x:Key="btnProfile" TargetType="Button">
@@ -33,6 +38,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+
     <DockPanel>
 
         <DockPanel DockPanel.Dock="Top" Height="100">
@@ -90,16 +96,20 @@
                 </Button>
             </StackPanel>
 
-            <Grid Margin="0,0,25,0" Width="150" DockPanel.Dock="Right" HorizontalAlignment="Right">
-                <Button x:Name="Profile" Style="{StaticResource btnProfile}" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FaceManProfile"
-                                                 Width="30"
-                                                 Height="30" />
-                        <TextBlock Text="Профиль" />
-                    </StackPanel>
+            <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Stretch"
+                        Background="{StaticResource SecondaryHueMidBrush}">
+                <Button x:Name="Profile" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Padding="0" HorizontalAlignment="Right" Margin="20"
+                        VerticalAlignment="Center" Command="{Binding LogoutCommand}" DockPanel.Dock="Right">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" Foreground="Black" />
+                            <TextBlock Text="Выйти" Foreground="Black" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button.Content>
                 </Button>
-            </Grid>
+                <TextBlock Text="{Binding User.Login}" FontSize="24" VerticalAlignment="Center" Foreground="Black" DockPanel.Dock="Right"
+                           HorizontalAlignment="Right" />
+            </DockPanel>
         </DockPanel>
 
         <Frame x:Name="MainContent" DockPanel.Dock="Bottom" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden" />

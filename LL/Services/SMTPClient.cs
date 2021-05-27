@@ -9,9 +9,9 @@ namespace LL.Services
 	public static class SMTPClient
 	{
 		private static readonly string address;
-		private static readonly SecureString password;
-		private static readonly string host;
-		private static readonly int port;
+		private static readonly SecureString securePassword;
+		private static readonly string cfgHost;
+		private static readonly int cfgPort;
 
 		public static bool IsAvailable { get; }
 
@@ -20,12 +20,12 @@ namespace LL.Services
 			try
 			{
 				address = ConfigurationManager.AppSettings["SMTPAddress"];
-				password = new SecureString();
+				securePassword = new SecureString();
 				foreach (var ch in ConfigurationManager.AppSettings["SMTPPassword"].ToCharArray())
-					password.AppendChar(ch);
-				password.MakeReadOnly();
-				host = ConfigurationManager.AppSettings["SMTPHost"];
-				port = Convert.ToInt32(ConfigurationManager.AppSettings["SMTPPort"]);
+					securePassword.AppendChar(ch);
+				securePassword.MakeReadOnly();
+				cfgHost = ConfigurationManager.AppSettings["SMTPHost"];
+				cfgPort = Convert.ToInt32(ConfigurationManager.AppSettings["SMTPPort"]);
 				IsAvailable = true;
 			}
 			catch (Exception ex)
@@ -35,10 +35,10 @@ namespace LL.Services
 			}
 		}
 
-		public static void SendMail(string fromName, string toMail, string toName, string subject, string body)
+		public static bool SendMail(string fromName, string toMail, string toName, string subject, string body)
 		{
 			if (!IsAvailable)
-				return;
+				return false;
 
 			try
 			{
@@ -52,21 +52,23 @@ namespace LL.Services
 						mailMessage.Subject = subject;
 						mailMessage.Body = body;
 
-						smtp.Host = host;
-						smtp.Port = port;
+						smtp.Host = cfgHost;
+						smtp.Port = cfgPort;
 						smtp.EnableSsl = true;
 						smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 						smtp.UseDefaultCredentials = false;
 
-						smtp.Credentials = new NetworkCredential(from.Address, password);
+						smtp.Credentials = new NetworkCredential(from.Address, securePassword);
 
 						smtp.Send(mailMessage);
 					}
 				}
+				return true;
 			}
 			catch (Exception ex)
 			{
 				Logger.Log(ex);
+				return false;
 			}
 		}
 	}

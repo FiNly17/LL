@@ -14,7 +14,6 @@ namespace LL.Services
 		static UserManager()
 		{
 			AccountType = AccountType.None;
-			//Login("kirill@gmail.com", "123");
 		}
 
 		public static bool Login(string login, string password)
@@ -89,7 +88,7 @@ namespace LL.Services
 
 				var hashedPassword = HashPassword(password);
 
-				db.Accounts.Add(new Admin(login, hashedPassword, email, phone, surname, name, middleName) { Type = AdminType.Minor});
+				db.Accounts.Add(new Admin(login, hashedPassword, email, phone, surname, name, middleName) { Type = AdminType.Minor });
 				db.SaveChanges();
 
 				return (true, null);

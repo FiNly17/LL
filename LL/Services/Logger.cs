@@ -9,17 +9,17 @@ namespace LL.Services
 
 		public static void Log(string msg)
 		{
-			using (var sw = new StreamWriter(fileName))
+			using (var sw = new StreamWriter(fileName, true))
 			{
-				sw.WriteLine($"{DateTime.Now:G}: {msg}");
+				sw.WriteLine($"{DateTime.Now:G}: {msg}\n");
 			}
 		}
 
 		public static void Log(Exception ex)
 		{
-			using (var sw = new StreamWriter(fileName))
+			using (var sw = new StreamWriter(fileName, true))
 			{
-				sw.WriteLine($"{DateTime.Now:G}: {ex.Message}\n{ex.InnerException}\n{ex.StackTrace}");
+				sw.WriteLine($"{DateTime.Now:G}: {ex.Message}\n{ex.InnerException}\n{ex.StackTrace}\n");
 			}
 		}
 	}

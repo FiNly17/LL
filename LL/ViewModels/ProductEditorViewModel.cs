@@ -221,7 +221,17 @@ namespace LL.ViewModels
 						if (string.IsNullOrEmpty(Price))
 							return "Введите центу товара";
 
-						var value = Converter.StringToDouble(Price);
+						double? value;
+
+						try
+						{
+							value = Convert.ToDouble(Price.Replace(".", ","));
+						}
+						catch
+						{
+							value = null;
+						}
+
 						if (value == null)
 							return "Цена товара должна быть числом";
 
@@ -255,7 +265,7 @@ namespace LL.ViewModels
 		{
 			var dialog = new OpenFileDialog()
 			{
-				Filter = "Картинки| *;*;*;*.bmp"
+				Filter = "Картинки| *.jpg;*.jpeg;*.png;*.bmp"
 			};
 
 			if (dialog.ShowDialog() == true)

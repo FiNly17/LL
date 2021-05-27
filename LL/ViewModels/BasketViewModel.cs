@@ -15,7 +15,13 @@ namespace LL.ViewModels
 	{
 		public event EventHandler CloseRequest;
 
-		public List<Product> Products => BasketManager.Products;
+		private List<Product> _products;
+
+		public List<Product> Products
+		{
+			get { return _products; }
+			set { SetProperty(ref _products, value); }
+		}
 
 		public double Sum => Products.Sum(item => item.Price);
 
@@ -28,7 +34,11 @@ namespace LL.ViewModels
 		public BasketViewModel()
 		{
 			BuyCommand = new RelayCommand(OnBuyCommandExecuted, CanBuyCommnadExecuted);
+			Refresh();
+			BasketManager.Products.CollectionChanged += (sender, e) => Refresh();
 		}
+
+		public void Refresh() => Products = BasketManager.Products.ToList();
 
 		private void Buy()
 		{

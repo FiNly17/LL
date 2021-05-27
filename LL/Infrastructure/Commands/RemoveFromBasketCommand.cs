@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using LL.Models;
 using LL.Services;
@@ -22,7 +18,7 @@ namespace LL.Infrastructure.Commands
 				BasketManager.Remove(product);
 				var window = BasketWindow.Instance;
 				if (window != null)
-					window.DataContext = new BasketViewModel();
+					(window.DataContext as BasketViewModel).Refresh();
 			}
 			else
 				throw new InvalidOperationException();

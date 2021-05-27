@@ -15,7 +15,7 @@ namespace LL.Services
 
 		static DataContext()
 		{
-			connectionString = ConfigurationManager.ConnectionStrings["DbConnectionCHIS"].ConnectionString;
+			connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
 
 			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
 		}
@@ -33,7 +33,7 @@ namespace LL.Services
 				_instance = new DataContext();
 				if (_instance.Accounts.Count() == 0)
 				{
-					_instance.Accounts.Add(new Admin("Kirill", UserManager.HashPassword("123"), "kirill@gmail.com", "+375291112233", "Олешкевич", "Кирилл", "Вадимович"));
+					_instance.Accounts.Add(new Admin("Admin", UserManager.HashPassword("123"), "admin@gmail.com", "+375291112233", "Admin", "Admin", "Admin"));
 					_instance.SaveChanges();
 				}
 			}

@@ -59,12 +59,12 @@
         </DockPanel>
         <DockPanel MinHeight="100" Background="Black" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="10">
-                <TextBlock Text="Итого: " Foreground="White"/>
-                <TextBlock Text="{Binding Sum, StringFormat=\{0:c\}}" Foreground="White"/>
+                <TextBlock Text="Итого: " Foreground="White" />
+                <TextBlock Text="{Binding Sum, StringFormat=\{0:c\}}" Foreground="White" />
             </StackPanel>
-            <Button Content="Купить" Command="{Binding BuyCommand}" Margin="10"/>
+            <Button Content="Купить" Command="{Binding BuyCommand}" Margin="10" />
         </DockPanel>
-        <ListBox ItemsSource="{Binding Products}" DockPanel.Dock="Bottom" VerticalAlignment="Stretch">
+        <ListBox ItemsSource="{Binding Products, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Bottom" VerticalAlignment="Stretch">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True" HorizontalAlignment="Center" />
@@ -88,6 +88,5 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
     </DockPanel>
 </Window>
