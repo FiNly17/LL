@@ -64,7 +64,7 @@
         </materialDesign:Card>
 
         <ScrollViewer DockPanel.Dock="Bottom">
-            <ListBox ItemsSource="{Binding SearchResult}" ItemTemplate="{StaticResource Field}">
+            <ListBox ItemsSource="{Binding SearchResult, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource Field}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel IsItemsHost="True" HorizontalAlignment="Center" />

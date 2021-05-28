@@ -27,7 +27,7 @@
     </Page.Resources>
     <DockPanel>
         <ScrollViewer DockPanel.Dock="Bottom">
-            <ListBox ItemsSource="{Binding Bookmarks}" ItemTemplate="{StaticResource Field}" Margin="20">
+            <ListBox ItemsSource="{Binding Bookmarks, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource Field}" Margin="20">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel IsItemsHost="True" HorizontalAlignment="Center">

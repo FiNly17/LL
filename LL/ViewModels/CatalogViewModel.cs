@@ -10,6 +10,8 @@ namespace LL.ViewModels
 {
 	public class CatalogViewModel : ViewModel
 	{
+		public static CatalogViewModel Instance { get; private set; }
+
 		public static string InitialQuery { get; set; }
 
 		private string _query = string.Empty;
@@ -64,11 +66,18 @@ namespace LL.ViewModels
 
 		public CatalogViewModel()
 		{
+			Instance = this;
 			Bookmarks = (UserManager.CurrentUser as User).Bookmarks;
 
 			SearchCommand = new RelayCommand(OnSearchCommandExecuted, CanSearchCommandExecute);
 			Query = InitialQuery;
 			Search();
+		}
+
+		public void Refresh()
+		{
+			Bookmarks = (UserManager.CurrentUser as User).Bookmarks;
+			SearchResult = DataContext.GetInstance().Products.ToList().Where(item => SearchResult.Contains(item)).ToList();
 		}
 
 		public void Search()
