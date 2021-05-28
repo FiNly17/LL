@@ -97,17 +97,17 @@
             </StackPanel>
 
             <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Stretch"
-                        Background="{StaticResource SecondaryHueMidBrush}">
-                <Button x:Name="Profile" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Padding="0" HorizontalAlignment="Right" Margin="20"
-                        VerticalAlignment="Center" Command="{Binding LogoutCommand}" DockPanel.Dock="Right">
+                        Background="Transparent">
+                <Button x:Name="Profile"  Padding="0" HorizontalAlignment="Right" Margin="20"
+                        VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Command="{Binding LogoutCommand}" DockPanel.Dock="Right">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" Foreground="Black" />
-                            <TextBlock Text="Выйти" Foreground="Black" VerticalAlignment="Center" />
+                            <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" Foreground="White" />
+                            <TextBlock Text="Выйти" Foreground="White" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <TextBlock Text="{Binding User.Login}" FontSize="24" VerticalAlignment="Center" Foreground="Black" DockPanel.Dock="Right"
+                <TextBlock Text="{Binding User.Login}" FontSize="24" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right"
                            HorizontalAlignment="Right" />
             </DockPanel>
         </DockPanel>

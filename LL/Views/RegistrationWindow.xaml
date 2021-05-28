@@ -115,8 +115,8 @@
         </Grid>
         <Grid Background="Transparent" Grid.Row="1" Grid.ColumnSpan="2" Name="Logo">
             <StackPanel>
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/ll.png" />
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Width="300" VerticalAlignment="Top" Source="/Images/slog.png" />
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/ll.png" />
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Width="300" VerticalAlignment="Top" Source="/Resources/slog.png" />
             </StackPanel>
         </Grid>
         <TextBox Text="{Binding Login}" x:Name="Login" Grid.Column="0" Grid.Row="2" Margin="0,40,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource TB}" />

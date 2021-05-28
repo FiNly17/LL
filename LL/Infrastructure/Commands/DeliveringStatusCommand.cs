@@ -16,7 +16,7 @@ namespace LL.Infrastructure.Commands
 				DataContext.GetInstance().Orders.Find(order.Id).Status = OrderStatuses.DeliveryInProgress;
 				DataContext.GetInstance().SaveChanges();
 				SMTPClient.SendMail(UserManager.CurrentUser.FullName, order.User.EMail, order.User.FullName, "Изменение статуса заказа",
-					$"Ваш заказ {order.Id} доставляется");
+					$"Ваш заказ {order.ProductsStr} доставляется");
 			}
 			else
 				throw new InvalidOperationException();
