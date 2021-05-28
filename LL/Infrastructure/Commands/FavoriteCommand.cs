@@ -2,6 +2,7 @@
 
 using LL.Models;
 using LL.Services;
+using LL.ViewModels;
 using LL.Views;
 
 namespace LL.Infrastructure.Commands
@@ -19,15 +20,17 @@ namespace LL.Infrastructure.Commands
 					var userctx = DataContext.GetInstance().Accounts.Find(UserManager.CurrentUser.Id) as User;
 					userctx.Bookmarks.Remove(product);
 					DataContext.GetInstance().SaveChanges();
-
 				}
 				else
 				{
 					(DataContext.GetInstance().Accounts.Find(UserManager.CurrentUser.Id) as User).Bookmarks.Add(product);
 					DataContext.GetInstance().SaveChanges();
-					
 				}
-				MainWindow.Instance.Refresh();
+
+				if (MainWindow.Instance.CurrentPage != Pages.BookmarkPage)
+					CatalogViewModel.Instance.Refresh();
+				else
+					MainWindow.Instance.SwitchPage(Pages.BookmarkPage);
 			}
 			else
 				throw new NotImplementedException();

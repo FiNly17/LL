@@ -83,7 +83,7 @@
             <StackPanel x:Name="NewReview_StackPanel">
                 <StackPanel Orientation="Horizontal" Margin="25 0">
                     <TextBlock FontSize="20" FontWeight="Medium" Foreground="White" Text="{Binding UserName}" />
-                    <materialDesign:RatingBar Margin="25,3,0,0" Foreground="GreenYellow" Value="{Binding UserRating}" />
+                    <materialDesign:RatingBar Margin="25,3,0,0" Foreground="GreenYellow" Value="{Binding UserRating, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
                 </StackPanel>
                 <TextBox Text="{Binding UserComment}" Margin="25 5" BorderThickness="2" BorderBrush="White" Height="50" />
                 <Button Background="Gray" Foreground="Black"
